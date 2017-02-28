@@ -1,0 +1,362 @@
+{
+  "home": {
+    "tab1": {
+      "slider1": {
+        "title": "Cloud Servers",
+        "text": "Performance, flexibility and extra control to your sites."
+      },
+      "slider2": {
+        "title": "Dedicated Servers",
+        "text": "Tailored setups with premium hardware and smart features."
+      },
+      "slider3": {
+        "title": "VPS Servers",
+        "text": "Performance, flexibility and extra control to your sites."
+      }
+    },
+    "tab2": {
+      "title": "Your Server",
+      "text": "Discover our Most Popular Configurations"
+    },
+    "tab3": {
+      "title": "Service",
+      "text": "The Key Features of our Job",
+      "item1": {
+        "title": "Support",
+        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      "item2": {
+        "title": "Well Documented",
+        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      "item3": {
+        "title": "Design UI/UX",
+        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      },
+      "item4": {
+        "title": "Web Security",
+        "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      }
+    },
+    "tab4": {
+      "title": "What people say",
+      "text": ""
+    },
+    "tab5": {
+      "title": "FOLLOW US",
+      "text": "Beautifully simple follow buttons to help you get followers on"
+    },
+    "tab6": {
+      "title": "TECHNOLOGY PARTNER",
+      "text": "Beautifully simple follow buttons to help you get followers on. Beautifully simple follow buttons to help you get followers on. Beautifully simple follow buttons to help you get followers on."
+    }
+  },
+  "header": {
+    "cart": {
+      "cart": "cart",
+      "title": "My Shopping Cart",
+      "th01": "Service",
+      "th02": "Periodicity",
+      "th03": "Quantity",
+      "th04": "Unit. Price",
+      "th05": "Remove",
+      "vat": "VAT"
+    },
+    "menu": {
+      "item1": {
+        "title": "Products",
+        "subitem1": "Cloud Servers",
+        "subitem2": "Dedicated Servers",
+        "subitem3": "Virtual Servers"
+      },
+      "item2": {
+        "title": "About Us",
+        "subitem1": "Get Support",
+        "subitem2": "API",
+        "subitem3": "myServers"
+      },
+      "login": "Login",
+      "signin": "Sign In"
+    }
+  },
+  "userdata": {
+    "name": "Name",
+    "email": "Email",
+    "vat": "VAT",
+    "password": "Password",
+    "repassword": "Retype Password",
+    "address": "Address",
+    "city": "City",
+    "zip": "Zip Code",
+    "phone": "Phone",
+    "createaccount": "Create Account",
+    "accessacount": "Access My Account",
+    "rememberme": "Remember me",
+    "forgorpassword": "Forgot Password?",
+    "recoverpassword": "Recover"
+  },
+  "footer": {
+    "collum01": {
+      "title": "PRODUCTS & SERVICES",
+      "item1": "Cloud Servers",
+      "item2": "Virtual Servers",
+      "item3": "Dedicated Servers",
+      "item4": "Add-ons"
+    },
+    "collum02": {
+      "title": "SUPPORT",
+      "item1": "API",
+      "item2": "Chat",
+      "item3": "Get support",
+      "item4": "Knowlegde Base",
+      "item5": "myServers"
+    },
+    "collum03": {
+      "title": "COMPANY",
+      "item1": "About",
+      "item2": "Contacts",
+      "item3": "Legal",
+      "item4": "Data Centers"
+    },
+    "collum04": {
+      "title": "CONTACT US"
+    }
+  },
+  "plans": {
+    "order": "Order Now",
+    "compare": "Compare",
+    "soldout": "Sold Out",
+    "lastitem": "Only One Left",
+    "cloud": {
+      "tab01": {
+        "title": "Redundant infrastructure<br> and <span class=\"c-blue\">high performance.</span>",
+        "item1": "Lorem Ipsum is simply dummy text of the printing.",
+        "item2": "Lorem Ipsum is simply dummy text of the printing."
+      },
+      "tab02": {
+        "title": "All Cloud Servers",
+        "text": "Discover all Cloud Server Configurations"
+      },
+      "tab03": {
+        "title": "Overview",
+        "text": "The Key Features of our Job",
+        "item1": {
+          "title": "Support",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item2": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item3": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item4": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+      }
+    },
+    "dedicated": {
+      "tab01": {
+        "title": "Single or Dual CPU, SATA 3<br> or <span class=\"c-blue\">SSD with RAID.",
+        "item1": "Lorem Ipsum is simply dummy text of the printing.",
+        "item2": "Lorem Ipsum is simply dummy text of the printing."
+      },
+      "tab02": {
+        "title": "All Dedicated Servers",
+        "text": "Discover all Dedicated Server Configurations"
+      },
+      "tab03": {
+        "title": "Overview",
+        "text": "The Key Features of our Job",
+        "item1": {
+          "title": "Support",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item2": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item3": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item4": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+      }
+    },
+    "vps": {
+      "tab01": {
+        "title": "The new generation<br> of <span class=\"c-blue\">VPS Servers",
+        "item1": "Lorem Ipsum is simply dummy text of the printing.",
+        "item2": "Lorem Ipsum is simply dummy text of the printing."
+      },
+      "tab02": {
+        "title": "All VPS Servers",
+        "text": "Discover all VPS Configurations"
+      },
+      "tab03": {
+        "title": "Overview",
+        "text": "The Key Features of our Job",
+        "item1": {
+          "title": "Support",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item2": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item3": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        },
+        "item4": {
+          "title": "Well Documented",
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        }
+      }
+    }
+  },
+  "contacts": {
+    "title": "Contact",
+    "text": "Leave a Message",
+    "text01": "Contact Us"
+  },
+  "checkout": {
+    "order": {
+      "payment": {
+        "method": "Payment Method:",
+        "tranfer": "Bank Transfer",
+        "atm": "ATM",
+        "paypal": "PayPal",
+        "account": "Account Balance",
+        "cc": "Credit card"
+      },
+      "confirmation": {
+        "title": "Order Confirmation",
+        "notes": "Notes and special requests",
+        "message": "Message...",
+        "terms": "Terms of Service",
+        "readterms": "Click here to read terms of service and check the box to accept them.",
+        "termserror": "Please, read and accept the terms of service before continue."
+      }
+    },
+    "confirmation": {
+      "tab1": {
+        "title": "Shopping Confirmation"
+      },
+      "tab2": {
+        "collum1": {
+          "title": "Data Confirmation",
+          "name": "Name",
+          "email": "Email"
+        },
+        "collum2": {
+          "title": "Payment Confirmation",
+          "total": "Total value",
+          "payment": "Payment method"
+        }
+      }
+    },
+    "end": {
+      "thankyou": "Thank you!",
+      "tymessage": "We appreciate your subscription. The details of your purchase and payment details have been sent to your email address. Please refer to it for details. In the event of questions or issues with your order, please contact us by one of the available channels."
+    }
+  },
+  "productbuy": {
+    "buy": "Add to Cart",
+    "reset": "Cancel",
+    "ordersum": "Summary",
+    "ossubt": "Total w/o VAT",
+    "osvat": "VAT",
+    "ostot": "Total w/ VAT",
+    "details": "Service Details",
+    "orderconf": "Order confirmation",
+    "orderprocess": "Order",
+    "payments": "Payments methods",
+    "termscond": "Terms and conditions",
+    "accepttc": "I have read and agree with terms and conditions:",
+    "promocode": "Promo code:",
+    "promocodetip": "Code",
+    "backtoshop": "Continue shopping",
+    "continue": "Continue",
+    "costumer": "Customer",
+    "costumeremail": "Email",
+    "payment": "Payment",
+    "worngcostumer": "Switch user",
+    "cart-contents": "Cart Contents",
+    "confirmation": "Confirmation",
+    "payment1": "Monthly",
+    "payment3": "Quarterly",
+    "payment6": "Biannual",
+    "payment12": "Annual",
+    "payment24": "Biannual",
+    "month": "mo",
+    "emptydomain": "Domain input is mandatory"
+  },
+  "btns": {
+    "view": "View",
+    "check": "Check Now",
+    "checkout": "Checkout",
+    "learn": "Learn More",
+    "continue": " Continue",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "send": "Send",
+    "switch": " Switch user"
+  },
+  "contactus": {
+    "title": "Contact Us",
+    "text": "We love what we do, and we are here to help.",
+    "ourcontact": "Our contacts",
+    "company_contact_f11": "Choose an option...",
+    "company_contact_f12": "Sales",
+    "company_contact_f13": "Support",
+    "company_contact_f14": "Billing",
+    "company_contact_f15": "Press",
+    "company_contact_f16": "Partnerships",
+    "company_contact_f17": "Meeting",
+    "company_contact_f18": "Abuse",
+    "company_contact_f19": "Customer Care",
+    "company_contact_f20": "CEO",
+    "your_name": "Your name",
+    "Your_email": "Your Email",
+    "subject": "Subject",
+    "message": "Message"
+  },
+  "filter": {
+    "general": "General",
+    "model": "Model",
+    "so": "OS",
+    "type": "Type",
+    "hardware": "Hardware",
+    "cache": "Cache",
+    "cores": "Cores",
+    "cpus": "CPUs",
+    "cpuinfo": "CPU-Info",
+    "speed": "Speed",
+    "hdd": "Hdd",
+    "memory": "Memory",
+    "raid": "Raid",
+    "installed": "Installed",
+    "supported": "Supported",
+    "network": "Network",
+    "traffic": "Traffic",
+    "uplinl": "Uplink",
+    "size": "Size",
+    "value": "Installed",
+    "benchmark": "Benchmark"
+  },
+  "compare": {
+    "clicktocompare": "Clique para comparar",
+    "clicktoselect": "Clique para seleccionar",
+    "productnotfound": "We couldn't find the the product you are looking for. Please contact us to solve it.",
+    "toomanyselected": "You can only select four(4) servers at a time to compare.",
+    "notfound": "Didn't found what you wanted?"
+  }
+
+}

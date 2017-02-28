@@ -1,0 +1,63 @@
+{
+  "home": {
+  },
+  "header": {
+  },
+  "userdata": {
+    "name": "Nome",
+    "email": "Email",
+    "password": "Palavra-Passe",
+    "repassword": "Reescrever Palavra-Passe",
+    "address": "Morada",
+    "phone": "Telefone",
+    "createaccount": "Criar conta",
+    "login": "Login",
+    "rememberme": "Lembrar-me",
+    "notlogged": "Não está loggado",
+    "forgorpassword": "Esqueceu a Password?",
+    "recoverpassword": "Recuperar",
+    "usernotregisted": " Utilizador não encontrado, verifique o email introduzido.",
+    "wrongpassword": "Palavra-passe incorrecta. Verique e tente novamente.",
+    "profile": "Perfil"
+  },
+  "general": {
+    "schools": "Escolas",
+    "teachers": "Professores",
+    "classes": "Turmas",
+    "students": "Alunos",
+    "questions": "Perguntas",
+    "tests": "Testes"
+  },
+  "btns": {
+    "edit": "Editar",
+    "insert": "Inserir",
+    "delete": "Eliminar",
+    "addstudent": "Adicionar novo aluno",
+    "newschool": "Inserir nova Escola",
+    "check": "Ver"
+  },
+  "questions": {
+    "question": "Pergunta",
+    "text": "Texto",
+    "list": "Lista",
+    "multimedia": "Escolha múltipla",
+    "whitespaces": "Lacunas",
+    "interpretation": "Picar",
+    "boxes": "Caixas",
+    "filters": "Filtros",
+    "filterbytype": "Filtrar por tipo",
+    "filterbuyubject": "Filtrar por categoria",
+    "insert": "Inserir Pergunta"
+  },
+  "tests": {
+    "insert": "Inserir Teste"
+  },
+  "categories": {
+    "contents": "Conteúdos",
+    "specification": "Especificação",
+    "specifications": "Especificações"
+  },
+  "type": "Tipo",
+  "subject": "Disciplina",
+  "note": "Nota"
+}

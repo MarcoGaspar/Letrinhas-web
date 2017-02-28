@@ -1,0 +1,292 @@
+<!--FORMULARIO -->
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+           <img src="img/text.png" style="height:30px;">
+       Novo teste
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes do teste
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <div class="panel-body">
+                <form id="newTestForm">
+                    <!-- TUTULO-DISCIPLINA-ANOESCOLAR -->
+                    <div class="col-sm-2 row">
+                        <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                            <option disabled selected>Ano Escolar</option>
+                            <optgroup label="1º Ciclo do Ensino Básico">
+                                <option value="1">1º</option>
+                                <option value="2">2º</option>
+                                <option value="3">3º</option>
+                                <option value="4">4º</option>
+                                <optgroup label="2º Ciclo Ensino Básico">
+                                    <option value="5">5º</option>
+                                    <option value="6">6º</option>
+                                    <optgroup label="3º Ciclo Ensino Básico">
+                                        <option value="7">7º</option>
+                                        <option value="8">8º</option>
+                                        <option value="9">9º</option>
+                                        <optgroup label="Ensino Secundário">
+                                            <option value="10">10º</option>
+                                            <option value="11">11º</option>
+                                            <option value="12">12º</option>
+                                        </optgroup>
+                                    </optgroup>
+                                </optgroup>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectSubject" name="subject">
+                            <option disabled selected>Disciplina</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control" id="selectContent" name="content">
+                            <option disabled selected>Conteúdo</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 row">
+                        <select class="form-control" id="selectSpecification" name="specification">
+                            <option disabled selected>Especificação</option>
+                        </select>
+                    </div>
+                    <div class="row col-md-12">
+                        <input type="text" class="form-control mandatory" placeholder="Título" name="title">
+                        <span class="glyphicon"><i class="fa fa-tag"></i></span>
+                    </div>
+
+
+                    <!-- BOTOES -->
+                    <legend>Perguntas <label id="questionsTestBadge" class="badge">
+                        0
+                    </label>
+                        <button type="button" class="btn-Add" data-toggle="modal" data-target="#myModal">
+                            +
+                        </button>
+                    </legend>
+                    <div id="questionsList"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 row">
+        <div class="btn-group" role="group" aria-label="...">
+            <button id="buttonCancelar" type="reset" class="btn btn-default">Cancelar</button>
+            <button id="newtestbtn" type="submit" class="btn btn-success">Inserir</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL para apresentar o equalizador para gravar o som -->
+<div class="modal fade" id="myModalRecord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                                                                                                  class="glyphicon glyphicon-remove-sign"
+                                                                                                  style="color:#ee3030"></span>
+                </button>
+                <h3 class="modal-title" id="myModalLabel">
+                    <img src="img/letrinhas2.png" style="height:40px">
+                    <img src="img/audio_file.png" style="height:40px;">
+                    Estudio de som:
+                </h3>
+            </div>
+            <div class="modal-body" style="height:550px; background-color:#ddeeff">
+                <div class="col-md-12" align=center>
+                    <div id="viz">
+                        <canvas id="analyser" width="525" height="100" style="display: inline-block;
+                                                                     background: #202020;
+                                                                     box-shadow: 0px 0px 10px blue;">
+                        </canvas>
+
+                        <canvas id="wavedisplay" width="525" height="100" style="display: inline-block;
+           		                                                       background: #202020;
+           		                                                       box-shadow: 0px 0px 10px blue;">
+                        </canvas>
+                    </div>
+                    <div id="controls">
+           		<span id="record" class="btn badge btn-primary" style="font-size:16px" value=0>
+                 <span class="glyphicon glyphicon-record" style="color:#ee0000"></span>
+                 Gravar
+              </span>
+                        <audio id="Rplayer" controls class="players" style="visibility:hidden;width:60%">
+                            <source src="" type="audio/wave">
+                        </audio>
+                        <a id="save" class="btn badge btn-info" style="visibility:hidden;color:#ffffff" disabled>
+                            <span class="glyphicon glyphicon-download-alt" style="color:#00ee00"></span>
+                            Download
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-12" id="rTexto" style="height:270px; overflow:auto; background-color:#ecdcbc">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ########################################### -->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Lista de perguntas</h4>
+            </div>
+            <div class="modal-body">
+                <section class="panel subMenu">
+
+                    <ul class="nav navbar-nav">
+                        <li><a>Total: <label id="questionsBadge" class=""><%=questions.length%></label>
+                        </a></li>
+                        <li>
+                            <input id="txtSearch" type="text" class="form-control" placeholder="Pesquisar"
+                                   aria-describedby="basic-addon2">
+                        </li>
+                        <li><a id="orderBy" class="order"><span style="font-size:16px;"
+                                                                class="pull-right hidden-xs showopacity fa fa-sort-alpha-desc"></span>
+                        </a></li>
+
+                        <!-- Filter by -->
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-filter"></i>
+                                Tipo </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="filter">
+                                    <input type="checkbox" value="text" checked>
+                                    <img src="img/text.png" style="height:20px">
+                                    <span> Texto </span></a></li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="multimedia" checked>
+                                    <img src="img/multimedia.png" style="height:20px">
+                                    <span> Multimédia </span></a>
+                                </li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="list" checked>
+                                    <img src="img/list.png" style="height:20px">
+                                    <span> Lista </span></a>
+                                </li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="interpretation" checked>
+                                    <img src="img/interpretation.png" style="height:20px">
+                                    <span> Interpretação </span></a>
+                                </li>
+
+                                <li class="divider"></li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="whitespaces" checked>
+                                    <img src="img/whitespaces.png" style="height:20px">
+                                    <span> Espaços </span></a></li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="connections" checked>
+                                    <img src="img/connections.png" style="height:20px">
+                                    <span> Ligações </span></a>
+                                </li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="regions" checked>
+                                    <img src="img/regions.png" style="height:20px">
+                                    <span> Regiões </span></a>
+                                </li>
+                                <li><a class="filter">
+                                    <input type="checkbox" value="boxes" checked>
+                                    <img src="img/boxes.png" style="height:20px">
+                                    <span> Caixas </span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-filter"></i>
+                                Disciplina
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" id="filterSubject" filter="">
+                                <li class="dropdown-submenu pull-left">
+                                    <a class=" contentFilter"
+                                       data-toggle="dropdown"
+                                       value=""
+                                       aria-expanded="false">Ver todas</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <div style="margin: 20px">
+                    <div class="panel-group" id="allQuestions">
+                        <% _.each(questions, function(question, iQuest) { %>
+
+                        <div class="panel panel-default" value=" <%= question.subject %>"
+                             id='<%= question._id %>' type="<%= question.type %>">
+                            <div class="panel-heading" value=" <%= question.subject %>"
+                            <% if ( question.profID == window.sessionStorage.getItem('username') ){ %>
+                            style="background-color:#FBF6B4"
+                            <% } %>>
+                            <h4 class="panel-title">
+                              <% // console.log('marco') %>
+
+                                <% // console.log(iQuest) %>
+                                <a data-toggle="collapse" data-parent="#allQuestions" href="#P<%= iQuest %>">
+                                    <img src="img/<%= question.type %>.png" class="smallImgPreView">
+
+                                    <span><%= question.title %></span></a>
+                                <button type="button" class="btn-Add addQuestion" questID="<%= question._id %>">
+                                    +
+                                </button>
+                            </h4>
+                        </div>
+                        <div id="P<%= iQuest %>" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <label class="col-md-3 lblDataDetails">Pergunta:</label>
+                                <label class="col-md-9 "><%= question.question %></label>
+
+                                <!--Se a pergunta for de texto obtem o html da preview-->
+                                <% if ( question.type == 'text'){ %>
+                                <%print(getTextPreview(question)) %>
+                                <% } %>
+                                <!--Se a pergunta for de Lista obtem o html da preview-->
+                                <% if ( question.type == 'list'){ %>
+                                <%print(setListPreview(question)) %>
+                                <% } %>
+                                <!--Se a pergunta for de Multimedia obtem o html da preview-->
+                                <% if ( question.type == 'multimedia'){ %>
+                                <%print(setMultimediaPreview(question)) %>
+                                <% } %>
+                                <!--Se a pergunta for de Interpretacao obtem o html da preview-->
+                                <% if ( question.type == 'interpretation'){ %>
+                                <%print(setInterpretationPreview(question)) %>
+                                <% } %>
+                                <!--Se a pergunta for de Caixas obtem o html da preview-->
+                                <% if ( question.type == 'boxes'){ %>
+                                <%print(setBoxesPreview(question)) %>
+                                <% } %>
+                                <!--Se a pergunta for de whiteSpaces obtem o html da preview-->
+                                <% if ( question.type == 'whitespaces'){ %>
+                                <%print(setWhiteSpacesPreview(question)) %>
+                                <% } %>
+                            </div>
+                        </div>
+
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>

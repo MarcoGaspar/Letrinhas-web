@@ -1,0 +1,102 @@
+<!--MENU -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+
+        <!-- search form -->
+        <div class="input-group">
+            <input type="text" id="txtSearch" class="form-control" placeholder="Procurar...">
+          <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+
+        <!-- /.search form -->
+
+        <ul class="sidebar-menu">
+            <li>
+                <a>
+                    <i class="fa fa-calendar"></i>
+                    <span data-i18n="">Total de Testes</span>
+                    <span class="pull-right-container">
+                        <span id="counter" class="label label-primary pull-right"><%=collection.length%>
+                    </span>
+                </span>
+                </a>
+            </li>
+            <% var p =_.groupBy(_.sortBy(collection, function(num) { return num; }).reverse(), 'solved') %>
+            <% _.each(p,function(resolution, iResol){ %>
+            <li>
+                <a>
+                    <i class="fa fa-file-text-o"></i>
+                    <span data-i18n=""><%if(iResol=='false'){print('Por resolver')}else{print('Por corrigir')}%></span>
+                    <span class="pull-right-container">
+                        <span id="counter" class="label label-primary pull-right"><%=resolution.length%>
+                    </span>
+                </span>
+                </a>
+            </li>
+                  <% _}); %>
+            <!-- Questions subjects -->
+            <li class="header" data-i18n="questions.filterbuyubject"></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<div id="resolutionsDiv" class="content-wrapper" style="background-color:none !important" >
+    <div class=" panel-body">
+        <div id="resolutionsContent" class=" panel-body col-md-12">
+            <div class="panel-group" id="accordion">
+                <% var p =_.groupBy(_.sortBy(collection, function(num) { return num; }).reverse(), 'solved') %>
+                <% console.log(p)%>
+                <% _.each(p,function(resolution, iResol){ %>
+                <% console.log(iResol) %>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%=iResol%>">
+                                <%if(iResol=='false'){print('Por resolver')}else{print('Por corrigir')}%></a>
+                            <span class="badge"><%=resolution.length%></span>
+                        </h4>
+                    </div>
+                    <div id="collapse<%=iResol%>" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <% _.each(resolution,function(test, iTest){ %>
+                            <% if ( test.solved){ %>
+                              <a href="#resolutions/<%= test._id %>"
+                                 title="Corrigir">
+
+                            <div class="row">
+
+                                <div class="listButton divWidget"
+                                     id='<%= test._id %>'>
+                                    <img src="<%= test.studentFoto %>">
+                                    <img src='img/<%= test.subject.split(":")[0] %>.png'>
+                                    <span><%= test.studentName %> - <%= test.title %></span>
+                                </div>
+
+                            </div>
+                            </a>
+                            <%}else{%>
+                              <a href="#test/<%= test._id %>/edit"
+                                 title="Corrigir">
+
+                            <div class="row">
+                                <div class="listButton divWidget"
+                                     id='<%= test._id %>'>
+                                    <img src="<%= test.studentFoto %>">
+                                    <img src='img/<%= test.subject.split(":")[0] %>.png'>
+                                    <span><%= test.studentName %> - <%= test.title %></span>
+                                </div>
+                            </div>
+                            <%}%>
+                            <% _}); %>
+                        </div>
+                    </div>
+                </div>
+                <% _}); %>
+            </div>
+        </div>
+    </div>
+</div>

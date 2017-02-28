@@ -1,0 +1,91 @@
+<div class="form">
+    <div id="testsPreview" class="row divWidget">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <!--Por cada pergunta--> <!--Coloca o primeiro indicator activo-->
+                <% _.each(model.questions,function(question,iQuestion){ %>
+                <li data-target="#myCarousel" data-slide-to="<%=iQuestion%>"
+                <% if ( iQuestion == 0 ){ %>class="active"<% } %>></li>
+                <% }); %>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!--Por cada pergunta--> <!--Coloca o primeiro indicator activo-->
+                <% _.each(model.questions,function(question,iQuestion){ %>
+                <% if ( iQuestion == 0 ){ %>
+                <div class="item active ">
+                    <% }else{ %>
+                    <div class="item ">
+                        <% } %>
+                        <%= getCorrectionPreview(question) %>
+                    </div>
+                    <% }); %>
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control"  href="#myCarousel" role="button" data-slide="prev" style="width:5% !important;    color: #F9D0DC;">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="width:5% !important;
+    color: #F9D0DC;">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="row divWidget">
+            <form id="testForm" class="col-md-12" type="test">
+                <input type="hidden" name="testID" value="<%=model._id%>">
+                <img src="<%=model.student.b64%>" class="smallImgPreView">
+                <label class="studentName"><%=model.student.name%></label>
+                <div class="col-md-12">
+                    <hr class="dataHr">
+                </div>
+                <div class="col-md 12">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td class="lblDataDetails">Tipo</td>
+                            <td class="lblDataDetails">Título</td>
+                            <td class="lblDataDetails">Peso</td>
+                            <td class="lblDataDetails">Nota</td>
+                        </tr>
+
+                        <!--Por cada pergunta--> <!--Apresenta a nota e o peso-->
+                        <% _.each(model.questions,function(question,iQuestion){ %>
+                        <tr>
+                            <td><img src="img/<%=question.info.type%>.png" class="smallImgPreView"></td>
+                            <td><%=question.info.title%></td>
+                            <td name="dificulty"><%=question.dif%></td>
+                            <td id="finalNote<%=question._id%>"></td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <hr class="dataHr">
+                </div>
+                <label class="dataTitle col-md-6 row">Nota final do teste</label>
+                <div class="col-md-6 row">
+                    <input type="number" class="form-control mandatory"
+                           id="testNote" name="testNote" readonly="readonly">
+                    <span class="glyphicon "><i class="fa fa-percent"></i></span>
+                </div>
+            </form>
+            <div class="col-md-12">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button id="backbtn" type="reset" class="btn btn-default">Cancelar</button>
+                    <button id="subCorrection" type="submit" class="btn btn-success">Submeter correção</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>$(document).ready(function () {
+    $('.carousel').carousel('pause');
+    console.log()
+});</script>

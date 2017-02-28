@@ -1,0 +1,133 @@
+<!--FORMULARIO -->
+
+
+<form id="newteacherform" class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+                <span class="titleText">
+                      Inserir novo professor
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;" data-original-title="" title=""></i>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12 center-child row">
+                    <div class="profile-pic">
+                        <input type="file" class="form-control  " id="filePicker" accept="image/jpg" name="img"
+                               style="background-color:#e9e9ff;">
+                        <img id="iFoto">
+                        <input type="hidden" id="base64textarea" class="form-control mandatory" accept="image/jpg"
+                               name="b64"
+                        >
+                        <div class="emptyState-container"><i class="fa fa-image fa-2x"></i></div>
+                    </div>
+                </div>
+                <div class="col-md-12 row">
+                    <input class="form-control mandatory" type="text" id="InputNome"
+                           placeholder="Nome completo"
+                           name="name"/>
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+                <div class="col-md-12 row">
+                    <input type="email" class="form-control mandatory" id="inputEmail"
+                           title="Endereço de e-mail" placeholder="Endereço de e-mail" name="email"/>
+                    <span id="imgMail" class="glyphicon glyphicon-envelope"></span>
+                </div>
+                <div class="col-md-12 row">
+                    <input type="number" min="210000000" max="999999999" class="form-control mandatory"
+                           id="InputTelefone" placeholder="Telefone" name="phoneNumber">
+                    <span class="glyphicon glyphicon-earphone"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <select class="form-control" id="dbUserType" name="permissionLevel">
+                            <option value="1">Auxiliar</option>
+                            <option value="2">Professor</option>
+                            <option value="3">Administrador do Sistema</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control" id="selectEstado" name="state">
+                            <option value="1">Ativo</option>
+                            <option value="0">Não Ativo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-book"></i> Segurança</div>
+            <div class="panel-body ">
+                <div class="col-md-6 row">
+                    <input type="password" class="form-control mandatory" id="InputPasswd"
+                           placeholder="Palavra-passe"
+                           name="password">
+                    <span id="pwdIcon" class="glyphicon glyphicon-lock"></span>
+                </div>
+                <div class="col-md-6 row">
+                    <input type="password" class="form-control mandatory" id="ConfirmPasswd"
+                           placeholder="Confirmar palavra-passe">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </div>
+                <div class="col-md-12 row">
+                    <input type="text" max="9999" class="form-control mandatory" id="inputPin"
+                           placeholder='Pin(para usar no Tablet)' name="pin">
+                    <span class="glyphicon glyphicon-modal-window"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-book"></i> Turmas</div>
+            <div class="panel-body ">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group m-bot15">
+                            <select class="form-control " id="dbSchools" name="school">
+                            </select>
+                            <span class="input-group-addon btn-white"><i class="fa fa-university"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group m-bot15">
+                            <select class="form-control" id="dbClasses" name="class">
+
+                            </select>
+                            <span class="input-group-addon btn-white"><i class="fa fa-book"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-bottom">
+                        <button id="addTurma" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+
+                </div>
+                <input type="hidden" value="{}" id="teacherClasses" class="form-control">
+
+                <div id="assocTurma" class="col-sm-12">
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 row">
+        <div class="btn-group" role="group" aria-label="...">
+            <button id="buttonCancelar" type="reset" class="btn btn-default">Cancelar</button>
+            <button id="newteacherbtn" type="submit" class="btn btn-success">Inserir</button>
+        </div>
+    </div>
+</form>

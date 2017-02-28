@@ -1,0 +1,172 @@
+<!--FORMULARIO -->
+
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+                <span class="titleText">
+                     Editar professor
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-edit">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <form id="editTeacherForm">
+                <div class="panel-body">
+                    <div class="col-md-12 center-child row">
+                        <div class="profile-pic">
+                            <input type="file" class="form-control  " id="filePicker" accept="image/jpg" name="img"
+                                   style="background-color:#e9e9ff;">
+                            <img id="iFoto" src=" <%= b64 %>">
+                            <input type="hidden" id="base64textarea" value="<%= b64 %>" class=" form-control mandatory"
+                                   accept="image/jpg"
+                                   name="b64"
+                            >
+                            <div class="emptyState-container"><i class="fa fa-image fa-2x"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input class="form-control mandatory" type="text" id="InputNome"
+                               placeholder="Nome completo" value="<%= name %>"
+                               name="name"/>
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input type="email" class="form-control mandatory" id="inputEmail" disabled value=" <%= _id %>"
+                               title="Endereço de e-mail" placeholder="Endereço de e-mail" name="email"/>
+                        <span id="imgMail" class="glyphicon glyphicon-envelope"></span>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input value="<%= phoneNumber %>" type="text" class="form-control mandatory"
+                               id="InputTelefone" placeholder="Telefone" name="phoneNumber">
+                        <span class="glyphicon glyphicon-earphone"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="form-control" id="dbUserType" name="type" disabled>
+                                <option value="1"
+                                <% if(permissionLevel== 1) print('selected') %>>Auxiliar</option>
+                                <option value="2"
+                                <% if(permissionLevel== 2) print('selected') %>>Professor</option>
+                                <option value="3"
+                                <% if(permissionLevel== 3) print('selected') %>>Administrador do Sistema</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" id="selectEstado" name="state" disabled>
+                                <option value="1"
+                                <% if(state== true) print('selected') %>>Ativo</option>
+                                <option value="0"
+                                <% if(state== false) print('selected') %>>Não Ativo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <div class="btn-group">
+                            <button id="btnEditDetails" type="submit" class="btn btn-success">Guardar alterações
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-edit">
+            <div class="panel-heading"><i class="fa fa-book"></i> Segurança</div>
+            <div class="panel-body ">
+                <form id="frmEditPasswd" enctype="multipart/form-data">
+
+                    <div class="row col-sm-12">
+                        <input type="password" class="form-control mandatory" id="txtOldPasswd"
+                               placeholder="Palavra-passe antiga"
+                               name="oldPswd" required>
+                        <span class="glyphicon"><i class="fa fa-unlock"></i></span>
+                    </div>
+                    <div class="row col-sm-12">
+                        <input type="password" class="form-control mandatory" id="txtNewPassword"
+                               placeholder="Palavra-passe nova" name="newPswd" required>
+                        <span id="pwdIcon" class="glyphicon"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <div class="row col-sm-12">
+                        <input type="password" class="form-control mandatory" id="txtConfPassword"
+                               placeholder="Confirmar palavra-passe nova" required>
+                        <span class="glyphicon"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <div class="row col-sm-12">
+                        <div class="btn-group">
+                            <button id="btnEditPsw" type="submit" class="btn btn-success">Alterar
+                                palavra-passe
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-edit">
+            <div class="panel-heading"><i class="fa fa-book"></i> Turmas</div>
+            <div class="panel-body ">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group m-bot15">
+                            <select class="form-control " id="dbSchools" name="school">
+                            </select>
+                            <span class="input-group-addon btn-white"><i class="fa fa-university"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group m-bot15">
+                            <select class="form-control" id="dbClasses" name="class">
+
+                            </select>
+                            <span class="input-group-addon btn-white"><i class="fa fa-book"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-bottom">
+                        <button id="addTurma" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="col-sm-12" id="listedClasses">
+                    <legend>Turmas associadas <label id="schoolsBadge" class="badge">
+                        <%= classLength %>
+                    </label>
+                    </legend>
+                    <% _.each(schools,function(school){ %>
+                    <% _.each(school.classes,function(classe){ %>
+                    <div class="row" id="<%= school._id %>:<%= classe._id %>" value="<%= classe.name %>"><p
+                            class="col-md-10 col-sm-10"> <%=
+                        school.name %>, <b><%= classe.name %></b></p>
+                        <div class="col-md-2 col-sm-2">
+                            <button class="desassocClass round-button fa fa-trash"
+                            ></button>
+                        </div>
+                    </div>
+                    <% }); %>
+                    <% }); %>
+                </div>
+                <div id="assocTurma" class="col-sm-12">
+                    <input type="hidden" value="{}" id="teacherClasses" class="form-control" name="classes">
+                    <legend>Novas turmas <label id="schoolsNewBadge" class="badge">
+                        0
+                    </label>
+                    </legend>
+                </div>
+                <div class="col-sm-12">
+                    <div class="btn-group">
+                        <button id="btnEditTurmas" type="submit" class="btn btn-success">Associar turmas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

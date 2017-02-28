@@ -1,0 +1,69 @@
+<div class="translations">
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+      <div class="input-group">
+                      <input type="text" id="txtSearch" class="form-control" placeholder="Procurar...">
+                    <span class="input-group-btn">
+                      <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                      </button>
+                    </span>
+                  </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a>
+                    <i class="fa fa-file-text"></i>
+                    <span data-i18n="general.questions">Utilizadores</span>
+                    <span class="pull-right-container">
+                        <span id="counter" class="label label-primary pull-right"><%=collection.length%>
+                    </span>
+                </span>
+                </a>
+            </li>
+            <li>
+                <a href="/#teachers/new">
+                    <i class="fa fa-question"></i>
+                    <span data-i18n="general.questions">Inserir novo</span>
+                    <span class="pull-right-container">
+                        <span id="counter" class="label  pull-right">  <i class="fa fa-plus"></i>
+                    </span>
+                </span>
+                </a>
+            </li>
+
+            <!-- Questions subjects -->
+            <li class="header" data-i18n="questions.filterbuyubject"></li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<div id="teachersDiv" class=" content-wrapper" style="background-color:none !important">
+    <div class=" panel-body col-md-5" align=center>
+        <div id="teachersContent" class=" panel-body col-md-12" align=center>
+            <% _.each(collection,function(prof){ %>
+            <div class="listButton divWidget row"
+                 id='<%= prof._id %>' value="<%= prof.name %>">
+
+                <img src="<%= prof.b64 %>">
+                <span><%= prof.name %></span>
+                <div class="editDeleteOp">
+                    <a href="#teachers/<%= prof._id %>/edit" title="Editar professor">
+                        <i id="btnEdit" class="fa fa-edit"></i>
+                    </a>
+                    <a href="#teachers" class="delete" title="Apagar professor">
+                        <i class="fa fa-trash-o"></i>
+                    </a>
+                </div>
+
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <div class="col-md-7" style="padding: 30px; " align="center">
+        <div id="teachersPreview" class="col-md-7 divWidget" style="width:100% !important" align="center">
+        </div>
+    </div>
+</div>
+  </div>

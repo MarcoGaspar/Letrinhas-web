@@ -1,0 +1,36 @@
+{
+  "name": "letrinhas",
+  "version": "0.0.2",
+  "homepage": "http://ipt.pt",
+  "description": "Letrinhas backoffice",
+  "dependencies": {
+    "basic-auth": "*",
+    "body-parser": "*",
+    "colors": "*",
+    "express": "~4.0.0",
+    "fs-extra": "^0.28.0",
+    "json-query": "^2.1.0",
+    "nano": "^6.2.0",
+    "request": "*"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "authors": [
+    "Pedro Dias <petermdias@gmail.com>",
+    "Tiago Fernandes <thiago_f@aeiou.pt>",
+    "Artur Gomes <artur.s.gomes@gmail.com>",
+    "Alexandre Carvalho <axcs90@gmail.com>",
+    "António Manso <manso@ipt.pt>",
+    "Renato Pestana <renatompestana@gmail.com",
+    "Cristina Pereira <>"
+  ],
+  "maintainers": [
+    "apocas <petermdias@gmail.com>",
+    "thiago_f@aeiou.pt",
+    "artur.s.gomes@gmail.com",
+    "axcs90@gmail.com",
+    "manso@ipt.pt",
+    "renatompestana@gmail.com"
+  ]
+}

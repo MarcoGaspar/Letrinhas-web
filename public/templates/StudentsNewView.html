@@ -1,0 +1,90 @@
+<!--FORMULARIO -->
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+            Inserir novo aluno
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <div class="panel-body">
+                <form id="newstudentform" role="form" method="POST" action="/students" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-md-5">
+                            <div class="profile-pic row">
+                                <input type="file" class="form-control" id="filePicker" accept="image/jpg"
+                                       name="img" style="background-color:#e9e9ff;">
+                                <img id="iFoto">
+                                <input type="hidden" id="base64textarea" class="form-control mandatory"
+                                       accept="image/jpg" name="b64">
+                                <div class="emptyState-container"><i class="fa fa-image fa-2x"></i></div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="col-md-12 row">
+                                <input type="text" class="form-control mandatory" id="InputNome"
+                                       placeholder="Nome" name="name">
+                                <span class="glyphicon " data-toggle="popover" data-trigger="hover"
+                                      data-placement="right" data-content="My popover content."><i
+                                        class="fa fa-user"></i></span>
+                            </div>
+                            <div class="col-md-12 row">
+                                <input type="number" class="form-control mandatory" id="InputNrAluno"
+                                       placeholder="Número"
+                                       name="number">
+                                <span class="glyphicon " data-toggle="popover" data-trigger="hover"
+                                      data-placement="right" data-content="My popover content."><i
+                                        class="fa fa-graduation-cap"></i></span>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control mandatory" id="InputUsername"
+                                           placeholder="Nome de utilizador" name="username">
+                                <span class="glyphicon "><i
+                                        class="fa fa-user"></i></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control mandatory" id="InputPassword"
+                                           placeholder="Palavra-passe" name="password">
+                                <span class="glyphicon"><i
+                                        class="fa fa-lock"></i></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon btn-white"><i
+                                                class="fa fa-university"></i></span>
+                                        <select class="form-control mandatory" id="dbSchools" name="school">
+                                        </select>
+                                        <span class="input-group-addon btn-white"><i class="fa fa-book"></i></span>
+                                        <select class="form-control mandatory" id="dbClasses" name="class">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button id="backbtn" type="reset" class="btn btn-default">Cancelar</button>
+                                <button id="newstudentbtn" type="submit" class="btn btn-success">Inserir</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

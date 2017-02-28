@@ -1,0 +1,105 @@
+<header class="main-header">
+
+    <!-- Logo -->
+    <a href="#user" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>L</b>etrinhas</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>L</b>etrinhas</span>
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <a href="#questions" data-toggle="tooltip" data-placement="bottom" title="Perguntas">
+                        <i class="fa fa-question"></i>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#tests" data-toggle="tooltip" data-placement="bottom"
+                       title="Testes genéricos">
+                        <i class="fa fa-file-text-o"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#resolutions" data-toggle="tooltip" data-placement="bottom"
+                       title="Testes atribuidos">
+                        <i class="fa fa-calendar"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#students" class="gotostudents" aria-expanded="false" data-toggle="tooltip" data-placement="bottom"
+                       title="Alunos" data-toggle="tooltip" data-placement="bootom">
+                        <i class="fa fa-graduation-cap"></i>
+
+                    </a>
+                </li>
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="<%=b64%>" class="user-image" alt="User Image">
+                        <span class="hidden-xs"><%=name%></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="<%=b64%>" class="img-circle" alt="User Image">
+
+                            <p>
+                                <%=name%>
+                                <small><%=permissionName%></small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <%if(permissionLevel>=3){%>
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#schools" data-toggle="tooltip" data-placement="top"
+                                       data-i18n="[tile]genral.school" title="Escolas">
+                                        <i class="fa fa-institution gotoschools"></i>
+                                    </a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#teachers" data-toggle="tooltip" data-placement="top" title="Professores">
+                                        <i class="fa fa-users"></i></i></a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#categories" data-toggle="tooltip" data-placement="top" title="Categorias">
+                                        <i class="fa fa-tag"></i></a>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </li>
+                        <%}%>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#user" class="btn btn-default btn-flat gotoprofile">Perfil</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>

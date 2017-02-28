@@ -1,0 +1,228 @@
+<!--FORMULARIO -->
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+           <img src="img/interpretation.png" style="height:40px;">
+       Nova pergunta de selecção
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes do teste
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <div class="panel-body">
+                <form id="newInterpretationTestForm" role="form" method="POST" action="/questions"
+                      enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <!-- TUTULO-DISCIPLINA-ANOESCOLAR -->
+                        <div class="col-sm-2 row">
+                            <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                                <option selected disabled>Ano escolar</option>
+                                <optgroup label="1º Ciclo do Ensino Básico">
+                                    <option value="1">1º Ano</option>
+                                    <option value="2">2º Ano</option>
+                                    <option value="3">3º Ano</option>
+                                    <option value="4">4º Ano</option>
+                                </optgroup>
+                                <optgroup label="2º Ciclo do Ensino Básico">
+                                    <option value="5">5º Ano</option>
+                                    <option value="6">6º Ano</option>
+                                </optgroup>
+                                <optgroup label="3º Ciclo do Ensino Básico">
+                                    <option value="7">7º Ano</option>
+                                    <option value="8">8º Ano</option>
+                                    <option value="9">9º Ano</option>
+                                </optgroup>
+                                <optgroup label="Ensino Secundário">
+                                    <option value="10">10º Ano</option>
+                                    <option value="11">11º Ano</option>
+                                    <option value="12">12º Ano</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 row">
+                            <select class="form-control mandatory" id="selectSubject" name="subject">
+                                <option disabled selected>Disciplina</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 row">
+                            <select class="form-control mandatory" id="selectContent" name="content">
+                                <option disabled selected>Conteúdo</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 row">
+                            <select class="form-control mandatory" id="selectSpecification" name="specification">
+                                <option disabled selected>Especificação</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6 row">
+                            <div class="input-group">
+                                <span class="input-group-addon btn-white"><i class="fa fa-tag"></i></span>
+                                <input type="text" class="form-control mandatory" id="InputTitulo"
+                                       placeholder="Título da pergunta"
+                                       name="title">
+                            </div>
+
+                        </div>
+                        <!-- PERGUNTA-DESCRIÇÃO -->
+                        <div class="col-sm-6 row">
+                            <div class="input-group">
+                                <span class="input-group-addon btn-white"><i class="fa fa-question"></i></span>
+                                <input type="text" class="form-control mandatory" id="InputPergunta"
+                                       placeholder="Pergunta" name="question">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="inputTextArea">Texto:</label>
+                            <span id="help" style="color:#aaaaaa"></span>
+
+                                 <textarea class="form-control mandatory" rows="7" id="inputTextArea" name="text"
+                                           style="resize: none;"
+                                 ></textarea>
+                            <panel id="inputPanel" class="form-control panel"
+                                   style="cursor: pointer; display:none; height:220px; background-color:#ffe9e9; overflow:auto"></panel>
+                        </div>
+                        <div class="col-sm-2">
+                            <button id="markText" class="btn btn-sm btn-info">
+                                <span class="glyphicon glyphicon-screenshot"
+                                      style="font-size:22px;color:#ff0000"></span>
+                                <br>
+                                <label>Marcar o texto</label>
+                            </button>
+                            <button id="writeText" class="btn btn-sm btn-warning" style="display:none">
+                                <span class="glyphicon glyphicon-pencil" style="font-size:18px;color:#ffdd00"></span>
+                                <br>
+                                <label>Finalizar</label>
+                            </button>
+                        </div>
+                        <div class="col-sm-12">
+                            <h4>Detalhes do Audio</h4>
+                            <hr class="formBar">
+                            </br>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-3" style="padding-right: 0px;">
+                            <span class="file-input btn btn-block btn-primary btn-file">
+                            Carregar ficheiro de som…
+                              <input id="uploadSoundFile" accept="audio/mp3"
+                                     style="position: absolute;opacity: 0;top: 0px;left: 5%;width: 90%;height: 100%;"
+                                     type="file" accept="audio/mp3" name="file">
+                            </span>
+                            </div>
+                            <div class="col-sm-3" style="padding-left: 0px;">
+                                <input type="text" class="form-control mandatory" id="soundPath"
+                                       placeholder="Nenhum ficheiro seleccionado"
+                                >
+                            </div>
+                            <div class="col-sm-1" style="vertical-align:bottom">
+                                <label style="margin-top: 10px;">OU</label>
+                            </div>
+                            <div class="col-sm-3" style="vertical-align:bottom">
+                                <button id="showEqualizer" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-record" style="color:#ff0000"></span>
+                                    Gravar ficheiro de som
+                                </button>
+                            </div>
+                        </div>
+                        <!-- BOTOES -->
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                </br>
+                                <div class="col-sm-5 col-md-offset-7">
+                                    <div class="col-sm-6">
+                                        <button id="backbtn" type="reset"
+                                                class="btn btn-default btn-block btn-cancel">
+                                            Cancelar
+                                        </button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <button id="subTxt" type="submit" class="btn btn-success btn-block btn-created"
+                                                title="Todos os campos são de preenchimento obrigatório.">
+                                            Inserir
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="painelInvisivel" class="form-group  col-sm-8" style="display:none">
+                            <select class="form-control" id="selectEstado" name="estado">
+                                <option>1</option>
+                            </select>
+                            <select class="form-control" id="selectTipo" name="type">
+                                <option>interpretation</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL para apresentar o equalizador para gravar o som -->
+<div class="modal fade" id="myModalRecord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"
+                          class="glyphicon glyphicon-remove-sign"
+                          style="color:#ee3030"></span>
+                </button>
+                <h3 class="modal-title" id="myModalLabel">
+                    <img src="img/letrinhas2.png" style="height:40px">
+                    <img src="img/audio_file.png" style="height:40px;">
+                    Estudio de som:
+                </h3>
+            </div>
+            <div class="modal-body row" style="background-color:#ddeeff">
+                <div class="col-md-12" align=center>
+                    <div id="viz">
+                        <canvas id="analyser" width="525" height="50" style="display: inline-block;
+                                                                     background: #202020;
+                                                                     box-shadow: 0px 0px 10px blue;">
+                        </canvas>
+
+                        <canvas id="wavedisplay" width="525" height="50" style="display: inline-block;
+           		                                                       background: #202020;
+           		                                                       box-shadow: 0px 0px 10px blue;">
+                        </canvas>
+                    </div>
+                    <div id="controls">
+           		<span id="record" class="btn badge btn-primary" style="font-size:16px" value=0>
+                 <span class="glyphicon glyphicon-record" style="color:#ee0000"></span>
+                 Gravar
+              </span>
+                        <audio id="Rplayer" controls class="players" style="visibility:hidden;width:60%">
+                            <source src="" type="audio/wave">
+                        </audio>
+                        <a id="save" class="btn badge btn-info" style="visibility:hidden;color:#ffffff" disabled>
+                            <span class="glyphicon glyphicon-download-alt" style="color:#00ee00"></span>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" id="rTexto">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ########################################### -->
+

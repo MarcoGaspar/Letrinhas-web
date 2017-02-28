@@ -1,0 +1,115 @@
+<!--FORMULARIO -->
+
+<div class="form">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+            Editar dados da escola
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;" data-original-title="" title=""></i>
+            </div>
+            <div class="panel-body">
+                <form id="schooleditform" role="form" method="POST" action="/schools" enctype="multipart/form-data">
+                    <div class="col-md-12 center-child row">
+                        <div class="profile-pic">
+                            <input type="file" class="form-control  " id="filePicker" accept="image/jpg" name="img"
+                                   style="background-color:#e9e9ff;">
+                            <img id="iFoto"
+                                 src="<%= b64 %>">
+                            <input type="hidden" id="base64textarea" class="form-control mandatory" accept="image/jpg"
+                                   name="b64"
+                                   value="<%= b64 %>">
+                            <div class="emptyState-container"><i class="fa fa-image fa-2x"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input type="text" class="form-control mandatory" id="schoolName" placeholder="Nome"
+                               name="name" value="<%= name %>">
+                        <span class="glyphicon"><i class="fa fa-institution"></i></span>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input type="text" class="form-control  mandatory" id="schoolAddress" placeholder="Morada"
+                               name="address" value="<%= address %>">
+                        <span class="glyphicon "><i class="fa fa-map"></i></span>
+                    </div>
+                    <!-- Botoes-->
+
+                    <div class="col-sm-12">
+                        <div class="btn-group">
+                            <button id="btnEditDetails" type="submit" class="btn btn-success">Guardar
+                                alterações
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-book"></i> Turmas</div>
+            <div class="panel-body ">
+                <form id="newclassform" class="row" method="post" action="/class/new">
+                    <div class="input-group ">
+                        <span class="input-group-addon">
+                            <select name="year" class="mandatory">
+                                <option selected="" disabled="">Ano escolar</option>
+                                <optgroup label="1º Ciclo do Ensino Básico">
+                                    <option value="1">1º Ano</option>
+                                    <option value="2">2º Ano</option>
+                                    <option value="3">3º Ano</option>
+                                    <option value="4">4º Ano</option>
+                                </optgroup>
+                                <optgroup label="2º Ciclo do Ensino Básico">
+                                    <option value="5">5º Ano</option>
+                                    <option value="6">6º Ano</option>
+                                </optgroup>
+                                <optgroup label="3º Ciclo do Ensino Básico">
+                                    <option value="7">7º Ano</option>
+                                    <option value="8">8º Ano</option>
+                                    <option value="9">9º Ano</option>
+                                </optgroup>
+                                <optgroup label="Ensino Secundário">
+                                    <option value="10">10º Ano</option>
+                                    <option value="11">11º Ano</option>
+                                    <option value="12">12º Ano</option>
+                                </optgroup>
+                            </select>
+                            </span>
+                        <input class="form-control mandatory" type="text" name="name" placeholder="Designação">
+                            <span class="input-group-addon addon-button">
+                            <button id="addNewClass" value="Criar Turma"
+                                    style="border: none;background-color: transparent;">Criar Turma
+                            </button>
+                            </span>
+                    </div>
+
+                </form>
+                <legend>Turmas associadas</legend>
+                <div id="classesList" class="col-md-12" align="left">
+                    <% _.each(classes,function(classe){ %>
+                    <div class="row">
+                        <p class="col-md-4 col-sm-4">
+                            <%= classe.year %>º <%= classe.name %>
+                        </p>
+                        <div class="col-md-8 col-sm-8">
+                            <buttom id="<%= classe._id %>" value="<%= classe.year %>º <%= classe.name %> "
+                                    class="deleteClass round-button fa fa-trash">
+                            </buttom>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

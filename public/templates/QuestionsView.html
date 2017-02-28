@@ -1,0 +1,219 @@
+<div class="translations">
+    <!--MENU -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar" style="height: auto;">
+
+            <!-- search form -->
+            <div class="input-group">
+                <input type="text" id="txtSearch" class="form-control" placeholder="Procurar...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+
+            <!-- /.search form -->
+
+            <ul class="sidebar-menu">
+                <li>
+                    <a>
+                        <i class="fa fa-question"></i>
+                        <span data-i18n="general.questions"></span>
+                        <span class="pull-right-container">
+                            <span id="counter" class="label label-primary pull-right"><%=collection.length%>
+                        </span>
+                    </span>
+                    </a>
+                </li>
+                <!-- Questions new -->
+                <li class="treeview">
+                    <a href="#">
+                        <span data-i18n="questions.insert"></span>
+                        <span class="pull-right-container">
+                            <span class="label label-success pull-right">+</span>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a href="#questionsText/new" id="textTestbtn">
+                            <img src="img/text.png" style="height:20px">
+                            <span> Texto </span></a></li>
+                        <li><a href="#multimediaTest/new" id="multimediaTestbtn">
+                            <img src="img/multimedia.png" style="height:20px">
+                            <span> Multimédia </span></a>
+                        </li>
+                        <li><a href="#questionslist/new" id="listTestbtn">
+                            <img src="img/list.png" style="height:20px">
+                            <span> Lista </span></a>
+                        </li>
+                        <li><a href="#interpretationTest/new" id="interpretationTestbtn">
+                            <img src="img/interpretation.png" style="height:20px">
+                            <span> Interpretação </span></a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li><a href="#whitespaces/new">
+                            <img src="img/whitespaces.png" style="height:20px">
+                            <span> Espaços </span></a></li>
+                        <li><a href="#connections/new">
+                            <img src="img/connections.png" style="height:20px">
+                            <span> Ligações </span></a>
+                        </li>
+                        <li><a class="order">
+                            <img src="img/regions.png" style="height:20px">
+                            <span> Regiões </span></a>
+                        </li>
+                        <li><a href="#questionsBoxes/new">
+                            <img src=" img/boxes.png" style="height:20px">
+                            <span> Caixas </span></a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Questions types -->
+                <li class="treeview">
+                    <a href="#">
+                        <span data-i18n="questions.filterbytype"></span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-filter pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li><a class="filter">
+                            <input type="checkbox" value="text" checked>
+                            <img src="img/text.png" style="height:20px">
+                            <span> Texto </span></a></li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="multimedia" checked>
+                            <img src="img/multimedia.png" style="height:20px">
+                            <span> Multimédia </span></a>
+                        </li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="list" checked>
+                            <img src="img/list.png" style="height:20px">
+                            <span> Lista </span></a>
+                        </li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="interpretation" checked>
+                            <img src="img/interpretation.png" style="height:20px">
+                            <span> Interpretação </span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="whitespaces" checked>
+                            <img src="img/whitespaces.png" style="height:20px">
+                            <span> Espaços </span></a></li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="connections" checked>
+                            <img src="img/connections.png" style="height:20px">
+                            <span> Ligações </span></a>
+                        </li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="regions" checked>
+                            <img src="img/regions.png" style="height:20px">
+                            <span> Regiões </span></a>
+                        </li>
+                        <li><a class="filter">
+                            <input type="checkbox" value="boxes" checked>
+                            <img src="img/boxes.png" style="height:20px">
+                            <span> Caixas </span></a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Questions subjects -->
+                <li class="header" data-i18n="questions.filterbuyubject"></li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <div class="content-wrapper" id="questionsDiv">
+
+        <% _.each(collection,function(question){ %>
+        <div class="col-md-6 col-sm-12 questionItem" id="<%=question._id%>" name="<%=question.title%>"
+             type="<%=question.type%>">
+            <!-- Box Comment -->
+            <div class="box box-widget collapsed-box">
+                <div class="box-header with-border" data-widget="collapse">
+                  <i class="fa fa-plus" style="display:none"></i>
+                    <div class="user-block">
+                        <img class="img-circle" src=" img/<%= question.subject.split(':')[0] %>.png" alt="User
+                        Image">
+                        <span class="username"><span class="info-box-text"><%=question.title%></span></span>
+                        <span class="description"><%=question.type%></span>
+                        <span class="hidden"><%=question.subject%></span>
+                        <span class="hidden"><%=question.title%></span>
+                    </div>
+                    <!-- /.user-block -->
+                    <div class="box-tools">
+
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <!--Se a pergunta for de texto obtem o html da preview-->
+                    <% if ( question.type == 'text'){ %>
+                    <%print(getTextPreview(question)) %>
+                    <% } %>
+                    <!--Se a pergunta for de Lista obtem o html da preview-->
+                    <% if ( question.type == 'list'){ %>
+                    <%print(setListPreview(question)) %>
+                    <% } %>
+                    <!--Se a pergunta for de Multimedia obtem o html da preview-->
+                    <% if ( question.type == 'multimedia'){ %>
+                    <%print(setMultimediaPreview(question)) %>
+                    <% } %>
+                    <!--Se a pergunta for de Interpretacao obtem o html da preview-->
+                    <% if ( question.type == 'interpretation'){ %>
+                    <%print(setInterpretationPreview(question)) %>
+                    <% } %>
+                    <!--Se a pergunta for de Caixas obtem o html da preview-->
+                    <% if ( question.type == 'boxes'){ %>
+                    <%print(setBoxesPreview(question)) %>
+                    <% } %>
+                    <!--Se a pergunta for de whiteSpaces obtem o html da preview-->
+                    <% if ( question.type == 'whitespaces'){ %>
+                    <%print(setWhiteSpacesPreview(question)) %>
+                    <% } %>
+
+                    <button type="button" class="btn btn-default btn-xs cloneQuestion" value="questions<%=question.type%>/<%=question._id%>/clone"><i
+                            class="fa fa-clone"></i> Clonar
+                    </button>
+                    <% if ( question.profID == window.sessionStorage.getItem("user") || question.profID ==
+                    window.localStorage.getItem("user")){ %>
+                    <button  type="button" class="btn btn-default btn-xs editQuestion"
+                            value="questions<%=question.type%>/<%=question._id%>/edit"><i
+                            class="fa fa-edit"></i> Editar
+                    </button>
+                    <button id="deleteQuest" type="button" class="btn btn-default btn-xs deleteQuestion" name="<%=question.title%>"
+                            value="<%=question._id%>"><i
+                            class="fa fa-trash-o"></i> Eliminar
+                    </button>
+
+                    <% } %>
+
+                    <span class="pull-right text-muted"><%=question.schoolYear%>º ano</span>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer box-comments">
+                    <div class="box-body no-padding">
+                        Criado por: <%=question.profID%>
+                    </div>
+                </div>
+
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <% }); %>
+    </div>
+
+</div>
+
+<script>
+    activateSteps(4);
+    var pop = Popcorn(".questBox");
+</script>

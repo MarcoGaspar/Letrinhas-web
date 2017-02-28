@@ -1,0 +1,462 @@
+<div class="container" id="myWizard">
+    <section class="content-header">
+        <h1>
+            Inserir
+            <small>Pergunta de texto</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="#questions"><i class="fa fa-question"></i> Perguntas</a></li>
+            <li class="active">Inserir</li>
+        </ol>
+    </section>
+    <br>
+    <div class="progress">
+        <div class="progress-bar progress-bar-letrinhas" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+             aria-valuemax="4" style="width: 25%;">
+            Passo 1 de 4
+        </div>
+    </div>
+    <div class="navbar hidden">
+        <div class="navbar-inner">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="#step1" data-toggle="tab" data-step="1"><img src="img/text.png"
+                                                                                         style="height:30px;"></a></li>
+                <li><a href="#step2" data-toggle="tab" data-step="2">Step 2</a></li>
+                <li><a href="#step3" data-toggle="tab" data-step="3">Step 3</a></li>
+                <li><a href="#step4" data-toggle="tab" data-step="4">Step 4</a></li>
+            </ul>
+        </div>
+    </div>
+    <form id="newTextTestForm" role="form" method="POST" action="/questions"
+          enctype="multipart/form-data">
+        <div class="tab-content">
+
+            <!-- Details -->
+            <div class="tab-pane fade in active" id="step1">
+                <div class="well">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Detalhes da pergunta</h3>
+                        <hr>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-toggle="modal"
+                                    data-target="#helpDetails"><i
+                                    class="fa fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--FORMULARIO -->
+
+                    <!-- TUTULO-DISCIPLINA-ANOESCOLAR -->
+                    <div class="row">
+                        <div class="col-sm-2 ">
+                            <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                                <option selected disabled>Ano escolar</option>
+                                <optgroup label="1º Ciclo do Ensino Básico">
+                                    <option value="1">1º Ano</option>
+                                    <option value="2">2º Ano</option>
+                                    <option value="3">3º Ano</option>
+                                    <option value="4">4º Ano</option>
+                                </optgroup>
+                                <optgroup label="2º Ciclo do Ensino Básico">
+                                    <option value="5">5º Ano</option>
+                                    <option value="6">6º Ano</option>
+                                </optgroup>
+                                <optgroup label="3º Ciclo do Ensino Básico">
+                                    <option value="7">7º Ano</option>
+                                    <option value="8">8º Ano</option>
+                                    <option value="9">9º Ano</option>
+                                </optgroup>
+                                <optgroup label="Ensino Secundário">
+                                    <option value="10">10º Ano</option>
+                                    <option value="11">11º Ano</option>
+                                    <option value="12">12º Ano</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 ">
+                            <select class="form-control mandatory" id="selectSubject" name="subject">
+                                <option disabled selected>Disciplina</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3 ">
+                            <select class="form-control mandatory" id="selectContent" name="content">
+                                <option disabled selected>Conteúdo</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 ">
+                            <select class="form-control mandatory" id="selectSpecification"
+                                    name="specification">
+                                <option disabled selected>Especificação</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- PERGUNTA-DESCRIÇÃO -->
+                    <div class="row">
+                        <div class="col-sm-6 row">
+                            <div class="input-group">
+                                <span class="input-group-addon btn-white"><i class="fa fa-tag"></i></span>
+                                <input type="text" class="form-control mandatory" id="InputTitulo"
+                                       placeholder="Título da pergunta"
+                                       name="title">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 row">
+                            <div class="input-group">
+                                            <span class="input-group-addon btn-white"><i
+                                                    class="fa fa-question"></i></span>
+                                <input type="text" class="form-control mandatory" id="InputPergunta"
+                                       placeholder="Pergunta" name="question">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- TEXTO -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label for="inputText">Texto</label>
+                    <textarea class="form-control mandatory" rows="7" id="inputText" name="text" style="resize: none;"
+                    ></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-default next" href="#">Continuar</a>
+                        </div>
+                    </div>
+                    <div class="hidden">
+                        <input name="type" value="text">
+                    </div>
+                </div>
+            </div>
+            <!-- Sound -->
+            <div class="tab-pane fade" id="step2">
+                <div class="well">
+                    <!-- Audio -->
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Detalhes do áudio</h3>
+                        <hr>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#helpSync">
+                                <i
+                                        class="fa fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3" style="padding-right: 0px;">
+                        <span class="file-input btn btn-block btn-primary btn-file">
+                        Carregar ficheiro de som…
+                          <input id="uploadSoundFile" accept="audio/mp3"
+                                 style="position: absolute;opacity: 0;top: 0px;left: 5%;width: 90%;height: 100%;"
+                                 type="file" accept="audio/mp3" name="file">
+                        </span>
+                        </div>
+                        <div class="col-md-3" style="padding-left: 0px;">
+                            <input type="text" class="form-control mandatory" id="soundPath"
+                                   placeholder="Nenhum ficheiro seleccionado" readonly>
+                        </div>
+                        <div class="col-md-1" style="vertical-align:bottom">
+                            <label style="margin-top: 10px;">OU</label>
+                        </div>
+                        <div class="col-md-3" style="vertical-align:bottom">
+                            <button id="showEqualizer" class="btn btn-default">
+                                <span class="glyphicon glyphicon-record" style="color:#ff0000"></span>
+                                Gravar ficheiro de som
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <audio controls id="teacherVoice">
+                                <source src="" type="audio/mpeg">
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="box-title">Estúdio de som</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" align=center>
+                            <div id="viz">
+                                <canvas id="analyser" width="525" height="50" style="display: inline-block;
+                                                                     background: #202020;
+                                                                     box-shadow: 0px 0px 10px blue;">
+                                </canvas>
+
+                                <canvas id="wavedisplay" width="525" height="50" style="display: inline-block;
+           		                                                       background: #202020;
+           		                                                       box-shadow: 0px 0px 10px blue;">
+                                </canvas>
+                            </div>
+                            <div id="controls">
+           		<span id="record" class="btn badge btn-primary" style="font-size:16px" value=0>
+                 <span class="glyphicon glyphicon-record" style="color:#ee0000"></span>
+                 Gravar
+              </span>
+                                <audio id="Rplayer" controls class="players">
+                                    <source src="" type="audio/wave">
+                                </audio>
+                                <a id="save" class="btn badge btn-info" style="visibility:hidden;color:#ffffff"
+                                   disabled>
+                                    <span class="glyphicon glyphicon-download-alt" style="color:#00ee00"></span>
+                                    Download
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12" id="rTexto">
+
+                        </div>
+                    </div>
+
+                </div>
+                <a class="btn btn-default previous" href="#">Voltar</a>
+                <a class="btn btn-default next" href="#">Continue</a>
+            </div>
+            <div class="tab-pane fade" id="step3">
+                <div class="well">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Sincronização de Som e Texto</h3>
+                        <hr>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#helpSync">
+                                <i
+                                        class="fa fa-question-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">Velocidade de reprodução
+                                <label id="soundSpeed"></label></div>
+                            <div class="col-md-6">
+                                <div class="btn-group ">
+                                    <button type="button" class="btn btn-default soundAdjust" value="-1">Reduzir
+                                    </button>
+                                    <button type="button" class="btn btn-default"><i class="fa fa-microphone"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default soundAdjust" value="1">Aumentar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-12  col-right">
+                                <audio controls id="teacherVoice1">
+                                    <source type="audio/mpeg">
+                                </audio>
+                            </div>
+                            <div class="col-md-12">
+                                <div id="wordsList">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-default previous" href="#">Voltar</a>
+                    <a class="btn btn-default next" href="#">Continuar</a>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="step4">
+                <div class="well"><h2>Step 4</h2>                     <!-- BOTOES -->
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            </br>
+                            <div class="col-sm-5 col-md-offset-7">
+                                <div class="col-sm-6">
+                                    <button id="backbtn" type="reset"
+                                            class="btn btn-default btn-block btn-cancel">
+                                        Cancelar
+                                    </button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button id="subTxt" type="submit"
+                                            class="btn btn-success btn-block btn-created"
+                                            title="Todos os campos são de preenchimento obrigatório.">
+                                        Inserir
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-default previous" href="#">Voltar</a>
+                <a class="btn btn-default next" href="#">Continue</a>
+            </div>
+
+
+        </div>
+    </form>
+</div>
+
+<script>
+    activateSteps(4);
+    var pop = Popcorn("#wordsList");
+</script>
+
+<!-- Modal details-->
+<div class="modal fade" id="helpDetails" tabindex="-1" role="dialog" aria-labelledby="helpDetailsLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="helpDetailsLabel">Ajuda <i class="fa fa-question-circle"></i></h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Ano escolar</td>
+                            <td>
+                                Ano escolar a que se destina esta pergunta (1º - 12º).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Disciplina</td>
+                            <td>
+                                Disciplina onde se enquadra a pergunta ex:Português.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Conteúdo</td>
+                            <td>
+                                Conteúdo em que se enquadra a temática da pergunta.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Especificação</td>
+                            <td>
+                                Especificação do conteúdo em que a pergunta se enquadra.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Título da pergunta</td>
+                            <td>
+                                Frase sugestiva que corresponda ao tema da pergunta.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pergunta</td>
+                            <td>
+                                Frase sugestiva que indique ao aluno qual a tarefa a desempenhar nesta questão.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Texto</td>
+                            <td>
+                                Conteúdo da pergunta.<br>
+                                <span class="text-red">Atenção:</span> Na alteração do texto, as marcações do passo
+                                3 serão removidas.
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Percebi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal sincronization-->
+<div class="modal fade" id="helpSync" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Ajuda <i class="fa fa-question-circle"></i></h4>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Botão</th>
+                            <th>Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Velocidade de reprodução</td>
+                            <td>
+                                <button type="button" class="btn btn-default"><i class="fa fa-microphone"></i>
+                                </button>
+                            </td>
+                            <td>De modo a facilitar a marcação das palavras é possível <b>reduzir</b> ou <b>aumentar</b>
+                                a velocidade do som reproduzido em 10% por click.<br>
+                                <span class="text-yellow">NOTA:</span> O som final do exercício será sempre mantido.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Marcar</td>
+                            <td>
+                                <button type="button" class="btn btn-default"><i class="fa fa-hand-pointer-o"></i>
+                                </button>
+                            </td>
+                            <td>Clique nas palavras à medida que estas vão sendo reproduzidas.<br>
+                                <span class="text-yellow">NOTA:</span> Poderá dividir este processo em várias etapas,
+                                seleccionando as palavras de forma
+                                intercalada.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ouvir</td>
+                            <td>
+                                <button type="button" class="btn btn-default"><i class="fa fa-play-circle-o"></i>
+                                </button>
+                            </td>
+                            <td>Reproduz o som no momento em que a palvra está marcada.</td>
+                        </tr>
+                        <tr>
+                            <td>Antecipar</td>
+                            <td>
+                                <button type="button" class="btn btn-default"><i class="fa fa-backward"></i>
+                                </button>
+                            </td>
+                            <td>Adianta o momento de leitura da palavra.</td>
+                        </tr>
+                        <tr>
+                            <td>Atrasar</td>
+                            <td>
+                                <button type="button" class="btn btn-default"><i class="fa fa-forward"></i>
+                                </button>
+                            </td>
+                            <td>Atrasa o momento de leitura da palavra.</td>
+                        </tr>
+                        <tr>
+                            <td>Remover marcação</td>
+                            <td>
+                                <button type="button" class="btn btn-default"><i class="fa fa-remove"></i>
+                                </button>
+                            </td>
+                            <td>Remove a marcação do tempo da palavra.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Percebi</button>
+            </div>
+        </div>
+    </div>
+</div>

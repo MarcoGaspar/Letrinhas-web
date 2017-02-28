@@ -1,0 +1,102 @@
+<!--FORMULARIO -->
+
+<div class="form">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+             Inserir nova escola
+        </span>
+            </div>
+        </div>
+    </div>
+    <form id="newschoolform" role="form">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes
+                    <i id="infoPop" class="fa fa-info-circle" style="float: right;" data-original-title="" title=""></i>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12 center-child row">
+                        <div class="profile-pic">
+                            <input type="file" class="form-control  " id="filePicker" accept="image/jpg" name="img"
+                                   style="background-color:#e9e9ff;">
+                            <img id="iFoto">
+                            <input type="hidden" id="base64textarea" class="form-control mandatory" accept="image/jpg"
+                                   name="b64"
+                            >
+                            <div class="emptyState-container"><i class="fa fa-image fa-2x"></i></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input type="text" class="form-control mandatory" id="schoolName" placeholder="Nome"
+                               name="name">
+                        <span class="glyphicon"><i class="fa fa-institution"></i></span>
+                    </div>
+                    <div class="col-md-12 row">
+                        <input type="text" class="form-control  mandatory" id="schoolAddress" placeholder="Morada"
+                               name="address">
+                        <span class="glyphicon "><i class="fa fa-map"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading"><i class="fa fa-book"></i> Turmas</div>
+                <div class="panel-body ">
+
+                    <div class="input-group  row">
+                        <span class="input-group-addon">
+                            <select id="dbYear" name="year">
+                                <option selected="" disabled="">Ano escolar</option>
+                                <optgroup label="1º Ciclo do Ensino Básico">
+                                    <option value="1">1º Ano</option>
+                                    <option value="2">2º Ano</option>
+                                    <option value="3">3º Ano</option>
+                                    <option value="4">4º Ano</option>
+                                </optgroup>
+                                <optgroup label="2º Ciclo do Ensino Básico">
+                                    <option value="5">5º Ano</option>
+                                    <option value="6">6º Ano</option>
+                                </optgroup>
+                                <optgroup label="3º Ciclo do Ensino Básico">
+                                    <option value="7">7º Ano</option>
+                                    <option value="8">8º Ano</option>
+                                    <option value="9">9º Ano</option>
+                                </optgroup>
+                                <optgroup label="Ensino Secundário">
+                                    <option value="10">10º Ano</option>
+                                    <option value="11">11º Ano</option>
+                                    <option value="12">12º Ano</option>
+                                </optgroup>
+                            </select>
+                            </span>
+                        <input class="form-control" type="text" id="classDesig" placeholder="Designação">
+                            <span class="input-group-addon addon-button">
+                            <button id="addNewClass" value="Adicionar Turma"
+                                    style="border: none;background-color: transparent;">Adicionar Turma
+                            </button>
+                            </span>
+
+                    </div>
+                    <input id="classesInput" name="classes" type="hidden" value="[]">
+                    <legend>Turmas associadas <label id="schoolsBadge" class="badge">0</label></legend>
+                    <div id="classesList" class="col-md-12" align="left">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="btn-group" role="group" aria-label="...">
+                <button id="backbtn" type="reset" class="btn btn-default">Cancelar</button>
+                <button id="subEscola" type="submit" class="btn btn-success">Inserir</button>
+            </div>
+        </div>
+    </form>
+</div>

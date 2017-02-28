@@ -1,0 +1,202 @@
+<!--FORMULARIO -->
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+           <img src="img/connections.png" style="height:30px;">
+       Nova pergunta de Ligações
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes do teste
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <div class="panel-body">
+                <form id="newMultimediaTestForm" role="form" method="POST" action="/questions"
+                      enctype="multipart/form-data">
+                    <!-- TUTULO-DISCIPLINA-ANOESCOLAR -->
+                    <div class="col-sm-2 row">
+                        <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                            <option selected disabled>Ano escolar</option>
+                            <optgroup label="1º Ciclo do Ensino Básico">
+                                <option value="1">1º Ano</option>
+                                <option value="2">2º Ano</option>
+                                <option value="3">3º Ano</option>
+                                <option value="4">4º Ano</option>
+                            </optgroup>
+                            <optgroup label="2º Ciclo do Ensino Básico">
+                                <option value="5">5º Ano</option>
+                                <option value="6">6º Ano</option>
+                            </optgroup>
+                            <optgroup label="3º Ciclo do Ensino Básico">
+                                <option value="7">7º Ano</option>
+                                <option value="8">8º Ano</option>
+                                <option value="9">9º Ano</option>
+                            </optgroup>
+                            <optgroup label="Ensino Secundário">
+                                <option value="10">10º Ano</option>
+                                <option value="11">11º Ano</option>
+                                <option value="12">12º Ano</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectSubject" name="subject">
+                            <option disabled selected>Disciplina</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectContent" name="content">
+                            <option disabled selected>Conteúdo</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 row">
+                        <select class="form-control mandatory" id="selectSpecification" name="specification">
+                            <option disabled selected>Especificação</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 row">
+                        <div class="input-group">
+                            <span class="input-group-addon btn-white"><i class="fa fa-tag"></i></span>
+                            <input type="text" class="form-control mandatory" id="InputTitulo"
+                                   placeholder="Título da pergunta"
+                                   name="title">
+                        </div>
+
+                    </div>
+                    <!-- PERGUNTA-DESCRIÇÃO -->
+                    <div class="col-sm-6 row">
+                        <div class="input-group">
+                            <span class="input-group-addon btn-white"><i class="fa fa-question"></i></span>
+                            <input type="text" class="form-control mandatory" id="InputPergunta"
+                                   placeholder="Pergunta" name="question">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-sm-12">
+                            <h4>Conteúdo</h4>
+                            <hr class="formBar">
+                            </br>
+                        </div>
+                        <!-- TEXTO -->
+                        <div class="row">
+                            <div class="col-md-12 row">
+                                <div class="input-group">
+                                    <span class="input-group-addon btn-white"><i>Tipo de opção</i></span>
+                                    <select class="form-control" id="selectOptionType" name="optionType">
+                                        <option value="text">
+                                            Texto
+                                        </option>
+                                        <option value="image">
+                                            Imagem
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 row">
+                                <div class="input-group">
+                                    <span class="input-group-addon btn-white"><i>Descrição</i></span>
+                                    <input type="text" class="form-control mandatory"
+                                           placeholder="Descrição do conjunto" name="optionDescrip">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-sm-12">
+                            <h4>Respostas</h4>
+                            <hr class="formBar">
+                            </br>
+                        </div>
+
+                        <div class="col-md-12 row">
+                            <div class="input-group">
+                                <span class="input-group-addon btn-white"><i>Tipo de correspondência</i></span>
+                                <select class="form-control" id="selectMatchType" name="matchType">
+                                    <option value="text">
+                                        Texto
+                                    </option>
+                                    <option value="image">
+                                        Imagem
+                                    </option>
+                                </select>
+                             <span class="input-group-addon btn-white" title="Adicionar resposta errada">
+                                 <button id="addConnect" class="fa fa-plus" style="color:#BD404C"></button>
+                             </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 row">
+                            <div class="input-group">
+                                <span class="input-group-addon btn-white"><i>Descrição</i></span>
+                                <input type="text" class="form-control mandatory"
+                                       placeholder="Descrição do conjunto" name="matchDescrip">
+                            </div>
+                        </div>
+
+                        <div id="painelInvisivel" class="form-group  col-sm-8" style="display:none">
+                            <select class="form-control" id="selectEstado" name="state">
+                                <option>1</option>
+                            </select>
+                            <select class="form-control mandatory" id="selectTipo" name="type">
+                                <option>multimedia</option>
+                            </select>
+                            </br>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <!-- OPCAO -->
+                        <div class="col-md-12" id="options">
+                            <div class="input-group">
+                                <input type="text" class="form-control mandatory option"
+                                       id="option0" placeholder="Opção 0">
+                                    <span class="input-group-addon btn-white">
+                                    <i class="fa fa-trash"
+                                       style="color:#A2BD40"></i></span>
+                                <input type="text"
+                                       class="form-control mandatory match"
+                                       id="match0"
+                                       placeholder="Correspondência 0">
+
+                            </div>
+                        </div>
+                        <!-- CORRESPONDENCIA -->
+                    </div>
+                    </br>
+                    <!-- BOTOES -->
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            </br>
+                            <div class="col-sm-5 col-md-offset-7">
+                                <div class="col-sm-6">
+                                    <button id="backbtn" type="reset"
+                                            class="btn btn-default btn-block btn-cancel">
+                                        Cancelar
+                                    </button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button id="subTxt" type="submit" class="btn btn-success btn-block btn-created"
+                                            title="Todos os campos são de preenchimento obrigatório.">
+                                        Inserir
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,145 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+
+        <!-- search form -->
+        <div class="input-group">
+            <input type="text" id="txtSearch" class="form-control" placeholder="Procurar...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>Alunos</span>
+                    <span class="pull-right-container">
+                        <span class="label label-primary pull-right" id="counter"><%=collection.length%></span>
+                    </span>
+                </a>
+            </li>
+
+
+            <li class="treeview">
+              <a id="newstudentbtn">
+                <i class="fa fa-graduation-cap"></i>
+                  <span>Adicionar Aluno</span>
+                  <span class="pull-right-container">
+                    <span class="label pull-right">  <i class="fa fa-plus"></i></span>
+                  </span>
+              </a>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <span>Filtrar</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <% _.each(collection,function(school){ %>
+                    <li><a href="#"><i class="fa fa-book text-yellow"></i>
+                        <span><%=school.name%></span></a></li>
+                    <% }); %>
+
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-filter"></i> <span>Filtrar</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <% console.log(_.groupBy(collection, 'schoolDetails')); %>
+                    <% _.each(collection,function(student){ %>
+
+                    <% }); %>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-circle-o"></i> Level One
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+<div class="content-wrapper" id="studentsDiv">
+    <% _.each(collection,function(student){ %>
+    <div class="col-md-4 col-sm-6 studentItem" name="<%=student.name%>" >
+        <!-- Box Comment -->
+        <div class="box box-widget collapsed-box" >
+
+            <div class="box-header with-border" data-widget="collapse">
+              <i class="fa fa-plus" style="display:none"></i>
+                <div class="user-block">
+                    <img class="img-circle" src="<%=student.b64%>" alt="User Image">
+                    <span class="username"><span class="info-box-text"><%=student.name%></span></span>
+                    <span class="description"><%=student.schoolDetails%> (<%=student.classDetails%>)</span>
+                </div>
+                <!-- /.user-block -->
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" ><i
+                            class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <img class="img-responsive pad" src="<%=student.b64%>" alt="Photo">
+                <button id="statStudent" type="button" class="btn btn-default btn-xs statStudent" value="<%=student._id%>"><i
+                        class="fa fa-edit"></i> Estatisticas
+                </button>
+                <button  id="editStudent" type="button" class="btn btn-default btn-xs editStudent" value="<%=student._id%>"><i
+                        class="fa fa-edit"></i> Editar
+                </button>
+
+                <button type="button" id="deleteStudent" class="btn btn-default btn-xs " name="<%=student.name%>"
+                        value="<%=student._id%>"><i
+                        class="fa fa-trash-o"></i> Eliminar
+                </button>
+
+                <span class="pull-right text-muted">Nrº <%=student.number%></span>
+            </div>
+            <!-- /.box-body -->
+
+
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <% }); %>
+</div>

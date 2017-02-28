@@ -1,0 +1,186 @@
+<div class="translations">
+    <!--MENU -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar" style="height: auto;">
+
+            <!-- search form -->
+            <div class="input-group">
+                <input type="text" id="txtSearch" class="form-control" placeholder="Procurar...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+
+            <!-- /.search form -->
+
+            <ul class="sidebar-menu">
+                <li>
+                    <a>
+                        <i class="fa fa-file-text"></i>
+                        <span data-i18n="general.tests"></span>
+                        <span class="pull-right-container">
+                            <span id="counter" class="label label-primary pull-right"><%=collection.length%>
+                        </span>
+                    </span>
+                    </a>
+                </li>
+                <!-- Tests new -->
+                <li class="treeview">
+                    <a href="#" class="newTest">
+                        <span data-i18n="tests.insert"></span>
+                        <span class="pull-right-container">
+                            <span class="label label-success pull-right">+</span>
+                        </span>
+                    </a>
+
+                </li>
+
+                <!-- Test subjects -->
+                <li class="header" data-i18n="questions.filterbuyubject"></li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <div class="content-wrapper">
+
+        <% _.each(collection,function(test){ %>
+        <div class="col-md-12 col-sm-12 testItem">
+            <!-- Box Comment -->
+            <div class="box box-widget collapsed-box">
+                <div class="box-header with-border previewTest" filled="false" id="<%=test._id%>" data-widget="collapse">
+                  <i class="fa fa-plus pull-right"></i>
+                    <div class="user-block">
+                        <img class="img-circle" src=" img/<%= test.subject.split(':')[0] %>.png" alt="User
+                        Image">
+                        <span class="username"><span class="info-box-text"><%=test.title%></span></span>
+                        <span class="description"><%=test.questions.length%></span>
+                        <span class="hidden"><%=test.subject%></span>
+                        <span class="hidden"><%=test.title%></span>
+                    </div>
+                    <!-- /.user-block -->
+                    <div class="box-tools">
+
+                        
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="mvCrsl<%=test._id%>" class="carousel slide" data-ride="carousel">
+
+                        <ol class="carousel-indicators">
+
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#mvCrsl<%=test._id%>" role="button" data-slide="prev" style="color: #F9D0DC;">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#mvCrsl<%=test._id%>" role="button" data-slide="next" style="color: #F9D0DC;">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <button type="button" class="btn btn-default btn-xs cloneTest" value="<%=test._id%>"><i
+                            class="fa fa-clone"></i> Clonar
+                    </button>
+                    <% if ( test.profID == window.sessionStorage.getItem("user") || test.profID ==
+                    window.localStorage.getItem("user")){ %>
+                    <button type="button" class="btn btn-default btn-xs assocTeste " testID="<%=test._id%>"><i
+                            class="fa fa-calendar "></i> Atribuir a aluno
+                    </button>
+                    <button type="button" class="btn btn-default btn-xs deleteTest" testName="<%=test.title%>"
+                            testID="<%=test._id%>"><i
+                            class="fa fa-trash-o"></i> Eliminar
+                    </button>
+
+                    <% } %>
+
+                    <span class="pull-right text-muted"><%=test.schoolYear%>º ano</span>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer box-comments">
+                    <div class="box-body no-padding">
+                        Criado por: <%=test.profID%>
+                    </div>
+                </div>
+
+                <!-- /.box-footer -->
+            </div>
+            <!-- /.box -->
+        </div>
+        <% }); %>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="attrTest" role="dialog">
+    <form id="attrTestForm">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body row">
+                    <input type="hidden" id="testID" name="genericID">
+
+                    <div class="col-md-6">
+                        <select class="form-control mandatory" id="studentsDD" name="studentID">
+                            <option disabled selected>Aluno</option>
+                        </select>
+                    </div>
+                    <div class="row col-md-6">
+                        <select class="form-control mandatory" id="selectType" name="type">
+                            <option disabled selected>Tipo de teste</option>
+                        </select>
+                    </div>
+                    <div class="row col-sm-12">
+                        <input type="text" class="form-control mandatory" placeholder="Descrição" name="description">
+                        <span class="glyphicon"><i class="fa fa-comment-o"></i></span>
+                    </div>
+
+                    <div class="row col-md-6">
+                        <div class='input-group date'>
+                            <span class="input-group-addon">De</span>
+                            <input type='text' class="form-control mandatory" name="beginDate"
+                                   placeholder="Data de Inicio"/>
+                        </div>
+                    </div>
+                    <div class="row col-md-6">
+                        <div class='input-group date'>
+                            <span class="input-group-addon">
+                                Até
+                            </span>
+                            <input type='text' class="form-control mandatory" name="endDate" placeholder="Data de Fim"/>
+
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('.date').datetimepicker({
+                                viewMode: 'days',
+                                format: 'DD-MM-YYYY'
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btnAtrTest" type="submit" class="btn btn-success">Atribuir</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,216 @@
+<!--FORMULARIO -->
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+           <img src="img/boxes.png" style="height:40px;">
+       Nova pergunta de Caixas
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes da pergunta
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <div class="panel-body">
+                <form id="newBoxesTestForm" role="form" method="POST" action="/questions" enctype="multipart/form-data">
+
+                    <!-- TUTULO-DISCIPLINA-ANOESCOLAR -->
+                    <div class="col-sm-2 row">
+                        <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                            <option selected disabled>Ano escolar</option>
+                            <optgroup label="1º Ciclo do Ensino Básico">
+                                <option value="1">1º Ano</option>
+                                <option value="2">2º Ano</option>
+                                <option value="3">3º Ano</option>
+                                <option value="4">4º Ano</option>
+                            </optgroup>
+                            <optgroup label="2º Ciclo do Ensino Básico">
+                                <option value="5">5º Ano</option>
+                                <option value="6">6º Ano</option>
+                            </optgroup>
+                            <optgroup label="3º Ciclo do Ensino Básico">
+                                <option value="7">7º Ano</option>
+                                <option value="8">8º Ano</option>
+                                <option value="9">9º Ano</option>
+                            </optgroup>
+                            <optgroup label="Ensino Secundário">
+                                <option value="10">10º Ano</option>
+                                <option value="11">11º Ano</option>
+                                <option value="12">12º Ano</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectSubject" name="subject">
+                            <option disabled selected>Disciplina</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectContent" name="content">
+                            <option disabled selected>Conteúdo</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 row">
+                        <select class="form-control mandatory" id="selectSpecification" name="specification">
+                            <option disabled selected>Especificação</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 row">
+                        <div class="input-group">
+                            <span class="input-group-addon btn-white"><i class="fa fa-tag"></i></span>
+                            <input type="text" class="form-control mandatory" id="InputTitulo"
+                                   placeholder="Título da pergunta"
+                                   name="title" value="<%=title%>">
+                        </div>
+
+                    </div>
+                    <!-- PERGUNTA-DESCRIÇÃO -->
+                    <div class="col-sm-6 row">
+                        <div class="input-group">
+                            <span class="input-group-addon btn-white"><i class="fa fa-question"></i></span>
+                            <input type="text" class="form-control mandatory" id="InputPergunta"
+                                   placeholder="Pergunta" name="question" value="<%=question%>">
+                        </div>
+
+                    </div>
+
+                    <!-- Lista de palavras -->
+
+                    <div class="col-sm-12">
+                        <h4>Caixas</h4>
+                        <hr style="background-color: #b0aac2;">
+                        </br>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="input-group">
+                                        <span class="input-group-addon btn-white">
+                                            <i class="fa fa-archive"></i></span>
+                                        <input type="text" class="form-control mandatory" id="boxTitle0"
+                                               placeholder="Especificação da caixa" value="<%=content.boxes[0].name%>">
+                                    </div>
+                                </div>
+                        <textarea class="form-control list  mandatory" rows="10" id="box0"
+                                  style="resize: none;"><% _.each(content.boxes[0].words,function(word){ print(word + '\n')})%></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="input-group">
+                                        <span class="input-group-addon btn-white"><i class="fa fa-archive"></i></span>
+                                        <input type="text" class="form-control mandatory" id="boxTitle1"
+                                               placeholder="Especificação da caixa" value="<%=content.boxes[1].name%>">
+                                    </div>
+                                </div>
+                                    <textarea class="form-control list" rows="10" id="box1"
+                                              style="resize: none;"><% _.each(content.boxes[1].words,function(word){ print(word + '\n')})%></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" class="form-control" id="boxes"
+                           name="boxes">
+                    <div id="painelInvisivel" class="form-group  col-sm-4" style="display:none">
+                        <div class="col-sm-2">
+                            <select class="form-control" id="selectEstado" name="state">
+                                <option>1</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="selectTipo" name="type">
+                                <option>boxes</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    </br>
+
+
+                    <div class="col-sm-12">
+                        </br>
+                        <div class="col-sm-5 col-md-offset-7">
+                            <div class="col-sm-6">
+                                <button id="backbtn" type="reset"
+                                        class="btn btn-default btn-block btn-cancel">
+                                    Cancelar
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button id="subTxt" type="submit" class="btn btn-success btn-block btn-created"
+                                        title="Todos os campos são de preenchimento obrigatório.">
+                                    Submeter
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL para apresentar o equalizador para gravar o som -->
+<div class="modal fade" id="myModalRecord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"
+                          class="glyphicon glyphicon-remove-sign"
+                          style="color:#ee3030"></span>
+                </button>
+                <h3 class="modal-title" id="myModalLabel">
+                    <img src="img/letrinhas2.png" style="height:40px">
+                    <img src="img/audio_file.png" style="height:40px;">
+                    Estudio de som:
+                </h3>
+            </div>
+            <div class="modal-body row" style="background-color:#ddeeff">
+                <div class="col-md-12" align=center>
+                    <div id="viz">
+                        <canvas id="analyser" width="525" height="50" style="display: inline-block;
+                                                                     background: #202020;
+                                                                     box-shadow: 0px 0px 10px blue;">
+                        </canvas>
+
+                        <canvas id="wavedisplay" width="525" height="50" style="display: inline-block;
+           		                                                       background: #202020;
+           		                                                       box-shadow: 0px 0px 10px blue;">
+                        </canvas>
+                    </div>
+                    <div id="controls">
+           		<span id="record" class="btn badge btn-primary" style="font-size:16px" value=0>
+                 <span class="glyphicon glyphicon-record" style="color:#ee0000"></span>
+                 Gravar
+              </span>
+                        <audio id="Rplayer" controls class="players" style="visibility:hidden;width:60%">
+                            <source src="" type="audio/wave">
+                        </audio>
+                        <a id="save" class="btn badge btn-info" style="visibility:hidden;color:#ffffff" disabled>
+                            <span class="glyphicon glyphicon-download-alt" style="color:#00ee00"></span>
+                            Download
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-12" id="rTexto">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ########################################### -->
+

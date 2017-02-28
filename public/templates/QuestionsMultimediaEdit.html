@@ -1,0 +1,298 @@
+<!--FORMULARIO -->
+<div class="form">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div align="center" class="titleBox">
+                <img class="titleImage">
+        <span class="titleText">
+           <img src="img/multimedia.png" style="height:30px;">
+       Nova pergunta de Multimédia
+        </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-gears"></i> Detalhes do teste
+                <i id="infoPop" class="fa fa-info-circle" style="float: right;"></i>
+            </div>
+            <div class="panel-body">
+                <form id="newMultimediaTestForm" role="form" method="POST" action="/questions"
+                      enctype="multipart/form-data">
+                    <!-- TUTULO-DISCIPLINA-ANOESCOLAR -->
+                    <div class="col-sm-2 row">
+                        <select class="form-control mandatory" id="selectAno" name="schoolYear">
+                            <option selected disabled>Ano escolar</option>
+                            <optgroup label="1º Ciclo do Ensino Básico">
+                                <option value="1">1º Ano</option>
+                                <option value="2">2º Ano</option>
+                                <option value="3">3º Ano</option>
+                                <option value="4">4º Ano</option>
+                            </optgroup>
+                            <optgroup label="2º Ciclo do Ensino Básico">
+                                <option value="5">5º Ano</option>
+                                <option value="6">6º Ano</option>
+                            </optgroup>
+                            <optgroup label="3º Ciclo do Ensino Básico">
+                                <option value="7">7º Ano</option>
+                                <option value="8">8º Ano</option>
+                                <option value="9">9º Ano</option>
+                            </optgroup>
+                            <optgroup label="Ensino Secundário">
+                                <option value="10">10º Ano</option>
+                                <option value="11">11º Ano</option>
+                                <option value="12">12º Ano</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectSubject" name="subject">
+                            <option disabled selected>Disciplina</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3 row">
+                        <select class="form-control mandatory" id="selectContent" name="content">
+                            <option disabled selected>Conteúdo</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4 row">
+                        <select class="form-control mandatory" id="selectSpecification" name="specification">
+                            <option disabled selected>Especificação</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 row">
+                        <div class="input-group">
+                            <span class="input-group-addon btn-white"><i class="fa fa-tag"></i></span>
+                            <input type="text" class="form-control mandatory" id="InputTitulo"
+                                   placeholder="Título da pergunta" value="<%=title%>"
+                                   name="title">
+                        </div>
+
+                    </div>
+                    <!-- PERGUNTA-DESCRIÇÃO -->
+                    <div class="col-sm-6 row">
+                        <div class="input-group">
+                            <span class="input-group-addon btn-white"><i class="fa fa-question"></i></span>
+                            <input type="text" class="form-control mandatory" id="InputPergunta" value="<%=question%>"
+                                   placeholder="Pergunta" name="question">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-sm-12">
+                            <h4>Conteúdo</h4>
+                            <hr class="formBar">
+                            </br>
+                        </div>
+                        <!-- TEXTO -->
+                        <div class="row">
+                            <div class="col-md-12 row">
+                                <div class="input-group">
+                                    <span class="input-group-addon btn-white"><i>Tipo de pergunta</i></span>
+                                    <select class="form-control" id="selectContentType" name="questionType">
+                                        <option
+                                        <%if(content.questionType=='text'){print('selected')}%> value="text">
+                                        Texto
+                                        </option>
+                                        <option
+                                        <%if(content.questionType=='image'){print('selected')}%> value="image">
+                                        Imagem
+                                        </option>
+                                        <option
+                                        <%if(content.questionType=='audio'){print('selected')}%> value="audio">
+                                        Áudio
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <%if(content.questionType=='image'){%>
+                            <div class="col-md-12" id="questionContent">
+                                <div class="input-group"><span class="input-group-addon btn-white"><i
+                                        class="fa fa-image" style="color:#4057BD"></i></span>
+                                    <input type="file"
+                                           class="form-control"
+                                           id="questionFile"
+                                           accept="image/*"
+                                           result="base64Question"><input
+                                            type="hidden" class="form-control" id="base64Question"
+                                            name="contentQuest" value="<%=content.question%>">
+                                    <span class="input-group-addon btn-white">
+                                        <img id="base64QuestionImg" src="<%=content.question%>">
+                                    </span>
+                                </div>
+                            </div>
+                            <%}%>
+                            <%if(content.questionType=='text'){%>
+                            <div class="col-md-12" id="questionContent">
+                                <div class="input-group"><span class="input-group-addon btn-white">
+                                    <i class="fa fa-font"
+                                       style="color:#4057BD"></i></span>
+                                    <textarea
+                                            class="form-control"
+                                            placeholder="Ex: Qual o resultado de 16 - 7 ?"
+                                            name="contentQuest" rows="4"
+                                            style="resize: none;"><%=content.question%></textarea></div>
+                            </div>
+                            <%}%><%if(content.questionType=='audio'){%>
+                            <div class="col-md-12" id="questionContent">
+                                <div class="input-group"><span class="input-group-addon btn-white"><i
+                                        class="fa fa-file-audio-o" style="color:#4057BD"></i></span>
+                                    <input type="file"
+                                           class="form-control"
+                                           id="questionFile"
+                                           accept="audio/mp3"
+                                           name="contentQuest">
+
+
+                                </div>
+                                <audio class="col-md-12" controls="controls" id="teacherVoice">
+                                    <source src="http://letrinhas.ipt.pt/couchdb/let_questions/<%=_id%>/voice.mp3"
+                                            type="audio/mpeg">
+                                </audio>
+                            </div>
+                            <%}%>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="col-sm-12">
+                            <h4>Respostas</h4>
+                            <hr class="formBar">
+                            </br>
+                        </div>
+
+                        <div class="col-md-12 row">
+                            <div class="input-group">
+                                <span class="input-group-addon btn-white"><i>Tipo de respostas</i></span>
+                                <select class="form-control" id="selectAnswerType" name="answerType">
+                                    <option
+                                    <%if(content.answerType=='text'){print('selected')}%> value="text">
+                                    Texto
+                                    </option>
+                                    <option
+                                    <%if(content.answerType=='image'){print('selected')}%> value="image">
+                                    Imagem
+                                    </option>
+                                </select>
+                             <span class="input-group-addon btn-white" title="Adicionar resposta errada">
+                                 <button id="addWrngAnswr" class="fa fa-plus" style="color:#BD404C"></button>
+                             </span>
+                            </div>
+                        </div>
+
+                        <!-- RESPOSTAS -->
+                        <div class="row" id="answerContent">
+                            <!-- Se for de texto -->
+                            <%if(content.answerType=='text'){%>
+                            <div class="col-sm-12 row" id="rightAnswers">
+                                <div class="input-group">
+                                <span type="text" class="input-group-addon btn-white">
+                                  <i class="fa fa-check" style="color:#A2BD40"></i>
+                                </span>
+                                    <input type="text" class="form-control mandatory" id="rightAnswer"
+                                           placeholder="Resposta correcta" value="<%=content.answers[0].content%>">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 row" id="wrongAnswers">
+                                <% _.each(content.answers,function(answer, iAnswer){ %>
+                                <%if(iAnswer!=0){%>
+                                <div class="input-group">
+                                <span type="text" class="input-group-addon btn-white">
+                                    <i class="fa fa-close" style="color:#BD404C"></i>
+                                </span>
+                                    <input type="text" class="form-control mandatory wrongAnswer"
+                                           placeholder="Resposta incorrecta" value="<%=answer.content%>">
+                                </div>
+                                <%}%>
+                                <%})%>
+                            </div>
+                            <%}%>
+                            <!-- Se for de imagem -->
+                            <%if(content.answerType=='image'){%>
+                            <div class="col-sm-12 row" id="rightAnswers">
+                                <div class="input-group"><span class="input-group-addon btn-white"><i
+                                        class="fa fa-check" style="color:#A2BD40"></i></span>
+                                    <input type="file"
+                                           class="form-control"
+                                           accept="image/*"
+                                           result="rightAnswer"><input
+                                            type="hidden" class="form-control" id="rightAnswer"
+                                            accept="image/*"
+                                            value="<%=content.answers[0].content%>">
+                                     <span class="input-group-addon btn-white">
+                                        <img id="rightAnswerImg" src="<%=content.answers[0].content%>">
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 row" id="wrongAnswers">
+                                <% _.each(content.answers,function(answer, iAnswer){ %>
+                                <%if(iAnswer!=0){%>
+                                <div class="input-group"><span class="input-group-addon btn-white"><i
+                                        class="fa fa-close" style="color:#BD404C"></i></span>
+                                    <input type="file"
+                                           class="form-control"
+                                           accept="image/*"
+                                           result="wrongAnswer<%=iAnswer-1%>">
+                                    <input
+                                            type="hidden" class="form-control mandatory wrongAnswer"
+                                            id="wrongAnswer<%=iAnswer-1%>"
+                                            accept="image/*"
+                                            value="<%=answer.content%>">
+                                     <span class="input-group-addon btn-white">
+                                         <img id="wrongAnswer<%=iAnswer-1%>Img" src="<%=answer.content%>">
+                                    </span>
+                                </div>
+                                <%}%>
+                                <%})%>
+                            </div>
+                            <%}%>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" id="inputAnswers"
+                                       name="answers">
+                            </div>
+                        </div>
+                        <div id="painelInvisivel" class="form-group  col-sm-8" style="display:none">
+                            <select class="form-control" id="selectEstado" name="state">
+                                <option>1</option>
+                            </select>
+                            <select class="form-control mandatory" id="selectTipo" name="type">
+                                <option>multimedia</option>
+                            </select>
+                            </br>
+                        </div>
+
+                    </div>
+
+
+                    </br>
+                    <!-- BOTOES -->
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            </br>
+                            <div class="col-sm-5 col-md-offset-7">
+                                <div class="col-sm-6">
+                                    <button id="backbtn" type="reset"
+                                            class="btn btn-default btn-block btn-cancel">
+                                        Cancelar
+                                    </button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button id="subTxt" type="submit" class="btn btn-success btn-block btn-created"
+                                            title="Todos os campos são de preenchimento obrigatório.">
+                                        Inserir
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
